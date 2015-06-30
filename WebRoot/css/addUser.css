@@ -1,0 +1,260 @@
+@CHARSET "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0;
+	font-size: 16px;
+}
+
+/*元素初始值*/
+html {
+	background: #eeeeee;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td,ins,hr
+	{
+	margin: 0px;
+	padding: 0px;
+}
+
+p {
+	cursor: text;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+}
+
+ol,ul {
+	list-style-type: none;
+}
+
+address,caption,cite,code,dfn,em,th,var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+img {
+	display: block;
+}
+
+caption,th {
+	text-align: left;
+}
+
+body {
+	position: relative;
+	font-size: 100%;
+	font-family: "宋体"
+}
+
+a {
+	text-decoration: none;
+}
+
+/*demo所用元素值*/
+#need1 {
+	margin: 0px auto 0;
+	width: 100%;
+}
+
+#need1 li {
+	height: 70px;
+	width: 100%;
+	font: 12px/ 26px Arial, Helvetica, sans-serif;
+	/*background: #FFD;*/
+	border-bottom: 1px dashed #E0E0E0;
+	display: block;
+	cursor: text;
+	padding: 7px 0px 7px 10px !important;
+	padding: 5px 0px 5px 10px;
+	align: center;
+}
+
+#need1 li:hover,#need1 li.hover {
+	background: #FFE8E8;
+	align: center;
+}
+
+#need1 textarea {
+	line-height: 15px;
+	background: #FFF;
+	font-size: 15px;
+	height: 65px;
+	width: 800px;
+	align: left;
+	border: 1px solid #E0E0E0;
+	vertical-align: middle;
+	padding: 6px;
+}
+
+#need1 label {
+	padding-left: 0px;
+}
+
+#need1 label.spanrem {
+	background-position: 0 -277px;
+	font-size: 17px;
+	/*line-height: 20px; */
+	height: 65px;
+	vertical-align: middle;
+}
+
+#need {
+	margin: 0px auto 0;
+	width: 100%;
+}
+
+#need li {
+	height: 30px;
+	width: 100%;
+	font: 12px/ 26px Arial, Helvetica, sans-serif;
+	/*background: #FFD;*/
+	border-bottom: 1px dashed #E0E0E0;
+	display: block;
+	cursor: text;
+	padding: 7px 0px 7px 10px !important;
+	padding: 5px 0px 5px 10px;
+	align: center;
+}
+
+#need li:hover,#need li.hover {
+	background: #FFE8E8;
+}
+
+#need input {
+	line-height: 30px;
+	background: #FFF;
+	font-size: 15px;
+	height: 30px;
+	width: 120px;
+	border: 1px solid #E0E0E0;
+	vertical-align: middle;
+	padding: 6px;
+}
+
+#need select {
+	line-height: 30px;
+	background: #FFF;
+	font-size: 15px;
+	height: 30px;
+	width: 120px;
+	border: 1px solid #E0E0E0;
+	vertical-align: middle;
+	padding: 6px;
+}
+
+#need button {
+	font-size: 12px;
+	height: 24px;
+	width: 60px;
+	padding: 4px;
+	margin-left:4px;
+}
+
+/* 按钮样式 */
+.input-button {
+	background-image: url(../images/button_bg.jpg);
+	height: 24px;
+	font-size: 14px;
+	border: 0px none 0;
+	display: inline;
+	color: #FFFFFF;
+	text-align: center;
+	overflow: hidden;
+	width: 60px;
+	cursor: hand;
+}
+
+#need label {
+	padding-left: 0px;
+}
+
+
+#need label.span {
+	background-position: 0 -277px;
+	height: 30px;
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+
+#need label.spanrem {
+	background-position: 0 -277px;
+	font-size: 14px;
+	/*line-height: 20px; */
+	height: 70px;
+	vertical-align: bottom;
+}
+
+#need label.inputrem {
+	background-position: 0 -277px;
+	font-size: 15px;
+	height: 70px;
+	line-height: 30px;
+	vertical-align: top;
+}
+
+#need label.rem {
+	background-position: 0 -277px;
+	height: 30px;
+	font-size: 15px;
+	vertical-align: bottom;
+}
+
+
+
+.box-content {
+	padding: 0px;
+	border-bottom: 1px solid #cdcdcd;
+	font-size: 12px;
+	color: #666;
+	width: 100%;
+	position: relative;
+	margin: 0px;
+	overflow-y: auto;
+	max-height: 760px;
+}
+
+.table-style {
+	border: 0px;
+	margin-bottom: 0px;
+	border-spacing: 0px;
+	width: 100%;
+	background-color: transparent;
+	position: relative;
+}
+
+.table-style-th {
+	vertical-align: bottom;
+	height: 20px;
+	padding: 5px 10px 2px;
+	border-bottom: 0px;
+	text-align: left;
+	color: #666666;
+	background-color: #efefef;
+	border-left: 1px solid #ddd;
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+	font-size: 50px;
+}
+
+.table-style-td {
+	vertical-align: middle;
+	height: 30px;
+	padding: 5px 10px 2px;
+	border-bottom: 0px;
+	text-align: left;
+	color: #666666;
+	background-color: #f9f9f9;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}

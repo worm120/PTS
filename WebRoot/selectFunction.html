@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大成DSEP-2000电力图像智能与温湿度安全监测系统</title>
+
+<style type="text/css">
+*{margin:0;padding:0;}
+.container{position:relative;width:1200px;height:700px; margin:0 auto; border:1px solid #fff;top:150px;}
+.box{width:120px;height:120px;background:#fff;cursor: pointer;}
+.fun{margin-left:auto;margin-right: auto;font-size: 25px;font-weight:bolder;}
+.boximg{width:120px;height:120px;}
+tr{height:200px;align-content: center;}
+td{width:200px;align-content: center;}
+</style>
+</head>
+<body>
+<div class="container">
+	<!--<div class="dot" style=""><img width="150px" height="150px" src='images/4.jpg'></div>
+	<div class="box" ><a onclick="interface()"><img class="boximg" src="images/1.png"><div class="fun">接口设置</div></a></div>
+	<div class="box" ><a onclick="system()"><img class="boximg" src="images/2.png"><div class="fun">系统设置</div></a></div>
+	<div class="box" ><a onclick="online()"><img class="boximg" src="images/3.png"><div class="fun">在线巡检</div></a></div>
+    <div class="box" ><a onclick="map()"><img class="boximg" src="images/6.jpg"><div class="fun">接线图</div></a></div>
+	<div class="box" ><a onclick="logs()"><img class="boximg" src="images/15.jpg"><div class="fun">日志管理</div></a></div>
+	<div class="box" ><a onclick="user()"><img class="boximg" src="images/12.jpg"><div class="fun">用户管理</div></a></div>
+	<div class="box" ><a onclick="device"><img class="boximg" src="images/8.jpg"><div class="fun">设备管理</div></a></div>
+	<div class="box" ><a onclick="history()"><img class="boximg" src="images/9.jpg"><div class="fun">历史数据</div></a></div>
+	-->
+	<table align="center">
+		<tr>
+			<td><div class="box" ><a onclick="substation()"><img class="boximg" src="images/sub.jpg"><div class="fun">&nbsp&nbsp&nbsp&nbsp变电所</div></a></div></td>
+			<td><div class="box" ><a onclick="user()"><img class="boximg" src="images/12.jpg"><div class="fun">用户管理</div></a></div></td>
+			<td><div class="box" ><a onclick="map()"><img class="boximg" src="images/6.jpg"><div class="fun">接线图</div></a></div></td>
+			<td rowspan="2"><div class="box" ><a onclick="online()"><img class="boximg" src="images/3.png"><div class="fun">在线巡检</div></a></div></td>
+			<td><div class="box" ><a onclick="logs()"><img class="boximg" src="images/15.jpg"><div class="fun">日志管理</div></a></div></td>
+		</tr>
+		<tr>
+			<td><div class="box" ><a onclick="system()"><img class="boximg" src="images/2.png"><div class="fun">系统设置</div></a></div></td>
+			<td><div class="box" ><a onclick="device()"><img class="boximg" src="images/8.jpg"><div class="fun">设备管理</div></a></div></td>
+			<td><div class="box" ><a onclick="interface()"><img class="boximg" src="images/1.png"><div class="fun">接口设置</div></a></div></td>
+			<td><!--<div class="box" ><a onclick="history()"><img class="boximg" src="images/9.jpg"><div class="fun">历史数据</div></a></div>--></td>
+		</tr>
+
+	</table>
+</div>
+<script type="text/javascript"> 
+
+	function substation()
+    {
+        window.open ('device/addSubstation.jsp?sid=S001','addSubstation','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function interface()
+    {
+        window.open ('interfaceSet.jsp?sid=S001','interfaceSet','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function system()
+    {
+        window.open ('systemSet.jsp?sid=S001','systemSet','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function online()
+    {
+        window.open ('online.jsp?sid=S001','online','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function map()
+    {
+        window.open ('svgManage.jsp?sid=S001','svgManage','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function user()
+    {
+        window.open ('userSet.jsp?sid=S001','userSet','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function logs()
+    {
+        window.open ('logs.jsp?sid=S001','logs','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function device()
+    {
+        window.open ('device.jsp?sid=S001','devicej','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    function history()
+    {
+        window.open ('historyData.jsp?sid=S001','historyData','height=500,width=1000,top=300px,left=500px,scrollbars=yes,resizable=yes');
+    }
+    
+</script>
+</body>
+</html>

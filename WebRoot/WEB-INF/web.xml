@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>operationlog</servlet-name>
+    <servlet-class>loghistory.operationlog</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>toexcel</servlet-name>
+    <servlet-class>loghistory.toexcel</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>temalarm</servlet-name>
+    <servlet-class>loghistory.temalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>picalarm</servlet-name>
+    <servlet-class>loghistory.picalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>arcalarm</servlet-name>
+    <servlet-class>loghistory.arcalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>temexcela</servlet-name>
+    <servlet-class>loghistory.temexcela</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>picexcela</servlet-name>
+    <servlet-class>loghistory.picexcela</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>arcexcela</servlet-name>
+    <servlet-class>loghistory.arcexcela</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>humalarm</servlet-name>
+    <servlet-class>loghistory.humalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>humexcela</servlet-name>
+    <servlet-class>loghistory.humexcela</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>temh</servlet-name>
+    <servlet-class>loghistory.temh</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>pich</servlet-name>
+    <servlet-class>loghistory.pich</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>arch</servlet-name>
+    <servlet-class>loghistory.arch</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>humh</servlet-name>
+    <servlet-class>loghistory.humh</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>temexcel</servlet-name>
+    <servlet-class>loghistory.temexcel</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>picexcel</servlet-name>
+    <servlet-class>loghistory.picexcel</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>arcexcel</servlet-name>
+    <servlet-class>loghistory.arcexcel</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>humexcel</servlet-name>
+    <servlet-class>loghistory.humexcel</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delopalarm</servlet-name>
+    <servlet-class>delete.delopalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deltemalarm</servlet-name>
+    <servlet-class>delete.deltemalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delpicalarm</servlet-name>
+    <servlet-class>delete.delpicalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delarcalarm</servlet-name>
+    <servlet-class>delete.delarcalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delhumalarm</servlet-name>
+    <servlet-class>delete.delhumalarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deltemh</servlet-name>
+    <servlet-class>delete.deltemh</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delpich</servlet-name>
+    <servlet-class>delete.delpich</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delarch</servlet-name>
+    <servlet-class>delete.delarch</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>delhumh</servlet-name>
+    <servlet-class>delete.delhumh</servlet-class>
+  </servlet>
+<servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getNewSubstationID</servlet-name>
+    <servlet-class>com.add.getNewSubstationID</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addSubstation</servlet-name>
+    <servlet-class>com.add.addSubstation</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteSubstation</servlet-name>
+    <servlet-class>com.add.deleteSubstation</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getNewDeviceId</servlet-name>
+    <servlet-class>com.add.getNewDeviceId</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addDevice</servlet-name>
+    <servlet-class>com.add.addDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteDevice</servlet-name>
+    <servlet-class>com.add.deleteDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getNewSampleId</servlet-name>
+    <servlet-class>com.add.getNewSampleId</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>addSample</servlet-name>
+    <servlet-class>com.add.addSample</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getDevice</servlet-name>
+    <servlet-class>com.link.getDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteSample</servlet-name>
+    <servlet-class>com.add.deleteSample</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>linkSubmation</servlet-name>
+    <servlet-class>com.link.linkSubmation</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getDeviceIdLinked</servlet-name>
+    <servlet-class>com.link.getDeviceIdLinked</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>linkDevice</servlet-name>
+    <servlet-class>com.link.linkDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteLinkedDevice</servlet-name>
+    <servlet-class>com.link.deleteLinkedDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>showOnlineDevice</servlet-name>
+    <servlet-class>com.online.showOnlineDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>checklogin</servlet-name>
+    <servlet-class>com.login.checklogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>setDevice</servlet-name>
+    <servlet-class>com.dataInterface.setDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>setSample</servlet-name>
+    <servlet-class>com.dataInterface.setSample</servlet-class>
+  </servlet>
+  <servlet>
+		<servlet-name>dwr</servlet-name>
+		<servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>fenxiang</servlet-name>
+    <servlet-class>com.add.fenxiang</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteFenzu</servlet-name>
+    <servlet-class>com.add.deleteFenzu</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getDeviceId</servlet-name>
+    <servlet-class>com.online.getDeviceId</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>settleAlarm</servlet-name>
+    <servlet-class>com.online.settleAlarm</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getSubDevice</servlet-name>
+    <servlet-class>com.dataInterface.getSubDevice</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>refreshSession</servlet-name>
+    <servlet-class>com.login.refreshSession</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>deleteSVG</servlet-name>
+    <servlet-class>com.link.deleteSVG</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>remoteGetPic</servlet-name>
+    <servlet-class>com.online.remoteGetPic</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>setPhotoAlarm</servlet-name>
+    <servlet-class>com.online.setPhotoAlarm</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>getNewSubstationID</servlet-name>
+    <url-pattern>/servlet/getNewSubstationID</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addSubstation</servlet-name>
+    <url-pattern>/servlet/addSubstation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteSubstation</servlet-name>
+    <url-pattern>/servlet/deleteSubstation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getNewDeviceId</servlet-name>
+    <url-pattern>/servlet/getNewDeviceId</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addDevice</servlet-name>
+    <url-pattern>/servlet/addDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteDevice</servlet-name>
+    <url-pattern>/servlet/deleteDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getNewSampleId</servlet-name>
+    <url-pattern>/servlet/getNewSampleId</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addSample</servlet-name>
+    <url-pattern>/servlet/addSample</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getDevice</servlet-name>
+    <url-pattern>/servlet/getDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteSample</servlet-name>
+    <url-pattern>/servlet/deleteSample</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>linkSubmation</servlet-name>
+    <url-pattern>/servlet/linkSubmation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getDeviceIdLinked</servlet-name>
+    <url-pattern>/servlet/getDeviceIdLinked</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>linkDevice</servlet-name>
+    <url-pattern>/servlet/linkDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteLinkedDevice</servlet-name>
+    <url-pattern>/servlet/deleteLinkedDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>showOnlineDevice</servlet-name>
+    <url-pattern>/servlet/showOnlineDevice</url-pattern>
+  </servlet-mapping>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>operationlog</servlet-name>
+    <url-pattern>/servlet/operationlog</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>toexcel</servlet-name>
+    <url-pattern>/servlet/toexcel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>temalarm</servlet-name>
+    <url-pattern>/servlet/temalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>picalarm</servlet-name>
+    <url-pattern>/servlet/picalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>arcalarm</servlet-name>
+    <url-pattern>/servlet/arcalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>temexcela</servlet-name>
+    <url-pattern>/servlet/temexcela</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>picexcela</servlet-name>
+    <url-pattern>/servlet/picexcela</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>arcexcela</servlet-name>
+    <url-pattern>/servlet/arcexcela</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>humalarm</servlet-name>
+    <url-pattern>/servlet/humalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>humexcela</servlet-name>
+    <url-pattern>/servlet/humexcela</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>temh</servlet-name>
+    <url-pattern>/servlet/temh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>pich</servlet-name>
+    <url-pattern>/servlet/pich</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>arch</servlet-name>
+    <url-pattern>/servlet/arch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>humh</servlet-name>
+    <url-pattern>/servlet/humh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>temexcel</servlet-name>
+    <url-pattern>/servlet/temexcel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>picexcel</servlet-name>
+    <url-pattern>/servlet/picexcel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>arcexcel</servlet-name>
+    <url-pattern>/servlet/arcexcel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>humexcel</servlet-name>
+    <url-pattern>/servlet/humexcel</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delopalarm</servlet-name>
+    <url-pattern>/servlet/delopalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deltemalarm</servlet-name>
+    <url-pattern>/servlet/deltemalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delpicalarm</servlet-name>
+    <url-pattern>/servlet/delpicalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delarcalarm</servlet-name>
+    <url-pattern>/servlet/delarcalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delhumalarm</servlet-name>
+    <url-pattern>/servlet/delhumalarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deltemh</servlet-name>
+    <url-pattern>/servlet/deltemh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delpich</servlet-name>
+    <url-pattern>/servlet/delpich</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delarch</servlet-name>
+    <url-pattern>/servlet/delarch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>delhumh</servlet-name>
+    <url-pattern>/servlet/delhumh</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>checklogin</servlet-name>
+    <url-pattern>/servlet/checklogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>setDevice</servlet-name>
+    <url-pattern>/servlet/setDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>setSample</servlet-name>
+    <url-pattern>/servlet/setSample</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+    <servlet-name>fenxiang</servlet-name>
+    <url-pattern>/servlet/fenxiang</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteFenzu</servlet-name>
+    <url-pattern>/servlet/deleteFenzu</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getDeviceId</servlet-name>
+    <url-pattern>/servlet/getDeviceId</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>settleAlarm</servlet-name>
+    <url-pattern>/servlet/settleAlarm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getSubDevice</servlet-name>
+    <url-pattern>/servlet/getSubDevice</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>refreshSession</servlet-name>
+    <url-pattern>/servlet/refreshSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteSVG</servlet-name>
+    <url-pattern>/servlet/deleteSVG</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>remoteGetPic</servlet-name>
+    <url-pattern>/servlet/remoteGetPic</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>setPhotoAlarm</servlet-name>
+    <url-pattern>/servlet/setPhotoAlarm</url-pattern>
+  </servlet-mapping>
+
+</web-app>

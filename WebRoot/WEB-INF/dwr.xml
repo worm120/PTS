@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC 
+"-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" 
+"http://www.directwebremoting.org/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<create creator="new" javascript="basicPara">
+			<param name="class" value="liangw.SysManageBean" />
+		</create>
+		<create creator="new" javascript="alarmSet">
+			<param name="class" value="liangw.SysManageBean" />
+		</create>
+		<create creator="new" javascript="picSet">
+			<param name="class" value="liangw.PicManageBean" />
+		</create>
+		
+		<create creator="new" javascript="dataManage">
+			<param name="class" value="liangw.PicManageBean" />
+		</create>
+		<create creator="new" javascript="picCmp">
+			<param name="class" value="liangw.PicManageBean" />
+		</create>
+		
+		
+		<create creator="new" javascript="picCut">
+			<param name="class" value="liangw.CutArea" />
+		</create>
+		
+
+		<create creator="new" javascript="addUser">
+			<param name="class" value="liangw.UserManageBean" />
+		</create>
+		<create creator="new" javascript="deleteUser">
+			<param name="class" value="liangw.UserManageBean" />
+		</create>
+		<create creator="new" javascript="rightAllo">
+			<param name="class" value="liangw.UserManageBean" />
+		</create>
+		<create creator="new" javascript="selfInfo">
+			<param name="class" value="liangw.UserManageBean" />
+		</create>
+
+
+
+		<convert converter="bean" match="liangw.SysManage">
+			<param name="include"
+				value="row,id,sample,check,save,preextem,extem,prelowtem,lowtem,predifftem,difftem,preexhum,exhum,prelowhum,
+				lowhum,abnortem,conti,alarmtime,photorate,changetime,name,subid,voice,message,port,alarmframe,preframe,
+				voiceframe,messageframe,rem"></param>
+		</convert>
+
+		<convert converter="bean" match="liangw.UserManage">
+			<param name="include"
+				value="name,login,pwd,begindate,enddate,right,subid,subname,lock,remark"></param>
+		</convert>
+
+		<convert converter="bean" match="liangw.PicManage">
+			<param name="include"
+				value="subid,subname,subplace,subtele,subdevice,subrem,id,pid,sampleid,name,width,
+				height,date,remark,substationid,sdeviceid,stype,srem,sname,splace,sid,
+				photoid,pid,psampleid,pname,plocation,pdate,prem,fam,total,rate,
+				photophotoid,photosubname,photodname,photosname,photopname,photopdate,photoprem,photoplocation,
+				x1,x2,y1,y2,did,deviceid,dsubid,dcard,dname,dplace,drem"></param>
+		</convert>
+
+		<convert converter="bean" match="liangw.Picture">
+			<param name="include" value="xiangsi,zong,rate,phoid"></param>
+		</convert>
+	</allow>
+
+
+
+	<signatures>
+		<![CDATA[
+		import java.util.List;
+		import java.util.ArrayList;
+		import com.system.SysManage;
+		import jsp.basicPara;
+		]]>
+	</signatures>
+
+</dwr>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Meta -->
+		<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+		<!-- End of Meta -->
+		
+		<!-- Page title -->
+		<title>大成DSEP-2000电力图像智能与温湿度安全监测系统</title>
+		<!-- End of Page title -->
+		
+		<!-- Libraries -->
+		<link type="text/css" href="css/login.css" rel="stylesheet" />	
+		<!-- End of Libraries -->	
+	</head>
+	<body>
+	<div id="container">
+		<div class="logo">
+			<a href="#"><img src="images/logo.png" alt="" /></a>
+		</div>
+		<div id="box">
+			<form action="" method="POST">
+			<p class="main">
+				<label>Username: </label>
+				<input id="username" name="username" value="username" /> 
+				<label>Password: </label>
+				<input type="password" id="password" name="password" value="asdf1234">	
+			</p>
+
+			<p class="space">
+				<!--<span><input type="checkbox" />Remember me</span>-->
+				<input type="submit" onClick="login()" value="Login" class="login" />
+			</p>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function login()
+		{
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			{
+			  xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()
+			{
+			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			  {
+				//显示返回的相应关id联接线图上的节点的开关柜
+				  	var result=xmlhttp.responseText;
+				  	alert(result);
+				    if(result.indexOf("sucess")>=0)
+					{
+						window.location.href="selectFunction.html";
+					}
+					else
+					{
+						alert("用户名、密码不正确，请确认后重新登录！");
+					}
+			  }
+			};
+			if(document.getElementById("username").value.trim()==""||document.getElementById("password").value.trim()=="")
+			{
+				alert("用户名、密码不能为空，请重新输入！");
+			}
+			else
+			{
+				xmlhttp.open("GET","servlet/checklogin?username="+document.getElementById("username").value+"&password="+document.getElementById("password").value+"&r="+new Date().getTime(),true);
+				xmlhttp.send();
+			}
+		}
+	</script>
+	</body>
+</html>
