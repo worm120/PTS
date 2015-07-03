@@ -199,7 +199,7 @@
 	    	box.setAttribute("width",boxwidth);
 	    	box.setAttribute("height",boxheight);
 	    }
-		var rDrag = {
+		/*var rDrag = {
 			
 			o:null,
 			
@@ -237,10 +237,10 @@
 		        }
 		        return e;
 		    }
-		};
+		};*/
 		window.onload = function(){
 		    var obj = document.getElementById('menu');
-			rDrag.init(obj);
+			//rDrag.init(obj);
 			init();
 		};
 	</script>
