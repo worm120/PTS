@@ -94,17 +94,6 @@ public class showOnlineDevice extends HttpServlet {
 				{
 					while(rs.next())
 					{
-						//String  getTemAlarm="select count(*) from AlarmLogTemperature where Cresult is null and AlarmLogTemperature.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='01' and Device_ID='"+rs.getString("Device_ID")+"')";
-						//String  getHumAlarm="select count(*) from AlarmLogHumidity where Cresult is null and AlarmLogHumidity.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='03' and Device_ID='"+rs.getString("Device_ID")+"')";
-						String  getTemAlarm_Pre="select count(*) from TemperatureCurrent where TemValue>(select Para_PreExceed_Tem from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
-						String  getHumAlarm_Pre="select count(*) from HumidityCurrent where HumValue>(select Para_PreExceed_Hum from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
-						String  getTemAlarm="select count(*) from TemperatureCurrent where TemValue>(select Para_Exceed_Tem from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
-						String  getHumAlarm="select count(*) from HumidityCurrent where HumValue>(select Para_Exceed_Hum from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
-						
-						
-						
-						String  getPicAlarm="select count(*) from AlarmLogPicture where Cresult is null and AlarmLogPicture.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='00' and Device_ID='"+rs.getString("Device_ID")+"')";
-						String  getHugAlarm="select count(*) from AlarmLogArc where Cresult is null and AlarmLogArc.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='02' and Device_ID='"+rs.getString("Device_ID")+"')";
 						
 						int TemPre=0;
 						int HumPre=0;
@@ -112,13 +101,42 @@ public class showOnlineDevice extends HttpServlet {
 						int Hum=0;
 						int Pic=0;
 						int Hug=0;
+						//String  getTemAlarm="select count(*) from AlarmLogTemperature where Cresult is null and AlarmLogTemperature.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='01' and Device_ID='"+rs.getString("Device_ID")+"')";
+						//String  getHumAlarm="select count(*) from AlarmLogHumidity where Cresult is null and AlarmLogHumidity.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='03' and Device_ID='"+rs.getString("Device_ID")+"')";
+						String  getTemAlarm_Pre="select count(*) from TemperatureCurrent where TemValue>(select Para_PreExceed_Tem from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
+						String  getHumAlarm_Pre="select count(*) from HumidityCurrent where HumValue>(select Para_PreExceed_Hum from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
+						String  getTemAlarm="select count(*) from TemperatureCurrent where TemValue>"+
+										"(select Para_Exceed_Tem from Parameter where Substation_ID="+
+										"(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) "+
+										"and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
+						String  getHumAlarm="select count(*) from HumidityCurrent where HumValue>(select Para_Exceed_Hum from Parameter where Substation_ID=(select Substation_ID from Device where Device_ID='"+rs.getString("Device_ID")+"')) and Sample_ID in(select Sample_ID from Sample where Device_ID='"+rs.getString("Device_ID")+"')";
 						
-						ResultSet rs2=ds.select(getTemAlarm_Pre);
+					
+						
+						String  getPicAlarm="select count(*) from AlarmLogPicture where Cresult is null and AlarmLogPicture.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='00' and Device_ID='"+rs.getString("Device_ID")+"')";
+						String  getHugAlarm="select count(*) from AlarmLogArc where Cresult is null and AlarmLogArc.Sample_ID in(select Sample.Sample_ID from Sample where Sample_Type='02' and Device_ID='"+rs.getString("Device_ID")+"')";
+						
+						String getTemAlarm1 = "select count(*) from dbo.AlarmLogTemperature where (Sdate is null or" +
+								" Cresult is null) and AlarmType = '2'";
+						String getPreTemAlarm1 = "select count(*) from dbo.AlarmLogTemperature where (Sdate is null or " +
+									"Cresult is null) and AlarmType = '1'";
+
+						
+						ResultSet rs2=ds.select(getPreTemAlarm1);
 						if(rs2!=null)
 						{
 							while(rs2.next())
 							{
 								TemPre=rs2.getInt(1);
+							}
+						}
+						
+						rs2=ds.select(getTemAlarm1);
+						if(rs2!=null)
+						{
+							while(rs2.next())
+							{
+								Tem=rs2.getInt(1);
 							}
 						}
 						
@@ -130,16 +148,7 @@ public class showOnlineDevice extends HttpServlet {
 								HumPre=rs2.getInt(1);
 							}
 						}
-						
-						rs2=ds.select(getTemAlarm);
-						if(rs2!=null)
-						{
-							while(rs2.next())
-							{
-								Tem=rs2.getInt(1);
-							}
-						}
-						
+											
 						rs2=ds.select(getHumAlarm);
 						if(rs2!=null)
 						{

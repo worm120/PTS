@@ -91,7 +91,7 @@ function init() {
 					node.textContent = "暂无数据";
 				} else {
 					//node.textContent = Device_Name+"(正常)";
-					node.textContent = "正常";
+					node.textContent = "正  常";
 				}
 				// 报警
 				//var alarmR=Device_Name+"：";
@@ -275,7 +275,7 @@ function sss(svgid) {
 					node.textContent = "暂无数据";
 				} else {
 					//node.textContent = Device_Name+"(正常)";
-					node.textContent = "正常";
+					node.textContent = "正   常";
 				}
 				// 报警
 				var alarmR="";

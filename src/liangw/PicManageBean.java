@@ -776,7 +776,7 @@ public class PicManageBean extends dataselect {
 			String sql = "select * from Photo,Device,Substation,Sample where Photo.Sample_ID=Sample.Sample_ID and "
 					+ "Substation.Substation_ID= Sample.Substation_ID and Sample.Device_ID = Device.Device_ID "
 					+ "and Device.Device_ID=? and Substation.Substation_ID=? "
-					+ "order by Substation.Substation_ID";
+					+ "order by Substation.Substation_ID,Date desc";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, deviceid);
 			pstmt.setString(2, subid);
