@@ -186,11 +186,11 @@
 			</div> 
 			<div class="inputdiv">
 				<div class="addname"><label>输入处理日志：</label></div>
-				<div class="addinput"><textarea id="Cresult" type="text" title="少于200个汉字" style="height:150px;" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'">报警记录！</textarea><font color="red">*</font></div>
+				<div class="addinput"><textarea id="Cresult" type="text" title="少于200个汉字" style="height:150px;" class="myinp" onmouseover="this.style.border='1px solid #f60'" onfoucs="this.style.border='1px solid #f60'" onblur="this.style.border='1px solid #ccc'"></textarea><font color="red">*</font></div>
 			</div> 
 			<p class="inputdiv">
 			<input id="submitt" type="submit" value="提交" class="sub" onClick="chuli()"/>
-			<input type="reset" value="重置"  class="sub" />
+			<input type="reset" value="重置"  class="sub" onClick="reset()"/>
 			</p> 
 			<input id="hid" type="hidden">
 			<input id="hid_sid" type="hidden" value="<% %>">
@@ -199,6 +199,12 @@
     
     </body>
     <script type="text/javascript">
+    	function reset()
+    	{
+    		var alarmID=document.getElementById("Id").value;//日志编号
+    		document.getElementById("Cresult").value = '';//处理日志的内容
+    		
+    	}
     	function chuli()
     	{
     		var alarmID=document.getElementById("Id").value;//日志编号
@@ -260,6 +266,8 @@
 			document.body.style.overflow = "hidden";
 
 			document.getElementById("Id").value=id;
+			
+			
     	}
     	var mClose = document.getElementById("close"); 
     	mClose.onclick = function() 

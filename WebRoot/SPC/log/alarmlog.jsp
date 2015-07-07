@@ -180,7 +180,9 @@
 			      }
 			}
 			
-			String sql2="select * from AlarmLogTemperature a,Sample b where a.Odate between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='01'";
+			String sql2="select * from AlarmLogTemperature a,Sample b where a.Odate between '"+s+"' and '"+
+						f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+
+								"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='01'";
 			ResultSet rs2=stmt1.executeQuery(sql2);
 			int i1=0;
 			if(rs2!=null)
@@ -203,7 +205,9 @@
 				pageSize = (allRecorders+lineSize-1)/lineSize ;
 			}
 			else {out.println(dname+"查询结果：");}
-			sql2="select * from AlarmLogPicture a,Sample b where a.Odate between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
+			/*sql2="select * from AlarmLogPicture a,Sample b where a.Odate between '"+s+"' and '"+f+
+				"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+
+				"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
 			rs2=stmt1.executeQuery(sql2);
 			int i2=0;
 			if(rs2!=null)
@@ -218,8 +222,8 @@
 				out.print("图像报警记录数：<span id='rc1'>"+i2+"</span>笔；");
 				allRecorders = i2 ;
 				pageSize1 = (allRecorders+lineSize-1)/lineSize ;
-			}
-			sql2="select * from AlarmLogArc a,Sample b where a.Odate between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='02'";
+			}*/
+			/*sql2="select * from AlarmLogArc a,Sample b where a.Odate between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='02'";
 			rs2=stmt1.executeQuery(sql2);
 			int i3=0;
 			if(rs2!=null)
@@ -234,7 +238,7 @@
 				out.print("弧光报警记录数：<span id='rc2'>"+i3+"</span>笔；");
 				allRecorders = i3 ;
 				pageSize2 = (allRecorders+lineSize-1)/lineSize ;
-			}
+			}*/
 			sql2="select * from AlarmLogHumidity a,Sample b where a.Odate between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='03'";
 			rs2=stmt1.executeQuery(sql2);
 			int i4=0;
@@ -245,7 +249,7 @@
 					i4++;
 				}
 			}
-			if(i3!=0)
+			if(i4!=0)
 			{
 				out.print("湿度报警记录数：<span id='rc3'>"+i4+"</span>笔；");
 				allRecorders = i4 ;
@@ -276,13 +280,13 @@
 			<font id="pages">共<%=pageSize%>页</font>
 			</p>
         </div>
-   
+   	<!-- 
           <div class="widget-title" id="c" style="cursor:pointer"> 
             <h5>图片报警记录</h5>
           </div>
           <div id="d" style="display:none">
           <div class="widget-content nopadding" id="pic" style="height:400px">
-            
+           
          </div>
         <p align="right">
 		<input class="btn" type="button" id="first1" value="首页" onClick="first1()" >
@@ -295,7 +299,8 @@
 		<font id="pages1">共<%=pageSize1%>页</font>
 		</p>
        </div>
-       
+       -->  
+       <!--  
           <div class="widget-title" id="e" style="cursor:pointer"> 
             <h5>弧光报警记录</h5>
           </div>
@@ -314,6 +319,7 @@
 		<font id="pages2">共<%=pageSize2%>页</font>
 		</p>
        </div>
+       -->
        <div class="widget-title" id="g" style="cursor:pointer"> 
             <h5>湿度报警记录</h5>
           </div>
@@ -334,11 +340,11 @@
        </div>
         </div>
 			
-    <form name="f1" id="f1" action="alarmlog.jsp" method="post">
+    <form name="f1" id="f1" action="" method="post">
             <p align="center">
 			<button type="button" class="btn" onclick="toexcel1()" >导出温度表</button>
-			<button type="button"  class="btn" onclick="toexcel2()" >导出图片表</button>
-			<button type="button"  class="btn" onclick="toexcel3()" >导出弧光表</button>
+			<!--<button type="button"  class="btn" onclick="toexcel2()" >导出图片表</button>  -->
+			<!--<button type="button"  class="btn" onclick="toexcel3()" >导出弧光表</button>  -->
 			<button type="button"  class="btn" onclick="toexcel4()" >导出湿度表</button>
 			</p>
 	</form>    
