@@ -6,11 +6,12 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>大成DSEP-2000电力图像智能与温湿度安全监测系统</title>
 		<!-- 新 Bootstrap 核心 CSS 文件 -->
 		<link rel="stylesheet" href="css/font-awesome/bootstrap.min.css">
 
 	
-		<title></title>
+		
 		<style>
 			.bg{background-image: url(images/logo13.jpg);}
 			.fheigh{height: 100%;padding-top: 20%;}

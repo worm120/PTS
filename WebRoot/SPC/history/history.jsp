@@ -260,7 +260,9 @@
 			int i1=0,i2=0,i3=0;
          	
 			
-			String sql2="select * from TemperatureHistory a,Sample b where a.Date between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='01'";
+			String sql2="select * from TemperatureHistory a,Sample b where a.Date between '"+s
+						+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+
+						did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='01'";
 			ResultSet rs2=stmt1.executeQuery(sql2);
 			
 			if(rs2!=null)
@@ -283,8 +285,11 @@
 				allRecorders = i1 ;
 				pageSize = (allRecorders+lineSize-1)/lineSize ;
 			}
-			else{out.print(dname+"查询结果：");}
-			sql2="select * from Photo a,Sample b where a.Date between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
+			else{
+				out.print(dname+"查询结果：");}
+			sql2="select * from Photo a,Sample b where a.Date between '"+s+"' and '"+f
+					+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did
+					+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
 			rs2=stmt1.executeQuery(sql2);
 			
 			if(rs2!=null)
@@ -336,7 +341,7 @@
 			rs2.close();
 			stmt1.close();
 			conn1.close();
-			System.out.print("hhh");
+// 			System.out.print("hhh");
 		%>
      
          <div class="widget-box" >
@@ -452,34 +457,34 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-  $("#a").click(function(){
-  $("#b").toggle();
-  });
-  $("#c").click(function(){
-  $("#d").toggle();
-  });
-  $("#e").click(function(){
-  $("#f").toggle();
-  });
-  $("#g").click(function(){
-  $("#h").toggle();
-  });
-  $("#i").click(function(){
-  $("#j").toggle();
-   $("#j").empty();
-  var b = $("#j");
-    	b.append('<iframe src="temline.jsp?did=<%=did%>&s=<%=s%>&f=<%=f%>" width="100%" height="400px" frameborder="0"></iframe>');
-
-
-  });
-  $("#k").click(function(){
-  $("#l").toggle();
-   $("#l").empty();
-  var b = $("#l");
-    	b.append('<iframe src="humline.jsp?did=<%=did%>&s=<%=s%>&f=<%=f%>" width="100%" height="400px" frameborder="0"></iframe>');
-
-
-  });
+	  $("#a").click(function(){
+	  $("#b").toggle();
+	  });
+	  $("#c").click(function(){
+	  $("#d").toggle();
+	  });
+	  $("#e").click(function(){
+	  $("#f").toggle();
+	  });
+	  $("#g").click(function(){
+	  $("#h").toggle();
+	  });
+	  $("#i").click(function(){
+	  $("#j").toggle();
+	   $("#j").empty();
+	  var b = $("#j");
+	  b.append('<iframe src="temline.jsp?did=<%=did%>&s=<%=s%>&f=<%=f%>" width="100%" height="400px" frameborder="0"></iframe>');
+	
+	
+	  });
+	  $("#k").click(function(){
+	  $("#l").toggle();
+	   $("#l").empty();
+	  var b = $("#l");
+	  b.append('<iframe src="humline.jsp?did=<%=did%>&s=<%=s%>&f=<%=f%>" width="100%" height="400px" frameborder="0"></iframe>');
+	
+	
+	  });
 });
 
 </script>

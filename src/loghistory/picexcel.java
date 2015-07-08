@@ -105,7 +105,9 @@ public class picexcel extends HttpServlet {
     	    DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/c");
     	    Connection conn=ds.getConnection();
     		Statement stmt=conn.createStatement();
-    		String sql6="select * from Photo a,Sample b where a.Date between '"+s+"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
+    		String sql6="select *,b.Sample_Name from Photo a,Sample b where a.Date between '"+s+
+    				"' and '"+f+"' and b.Substation_ID='"+sid+"' and b.Device_ID='"
+    				+did+"' and b.Sample_ID=a.Sample_ID and b.Sample_Type='00'";
     		ResultSet rs6=stmt.executeQuery(sql6);
         
         if(rs6!=null)
@@ -117,13 +119,13 @@ public class picexcel extends HttpServlet {
             		// 创建行  
                     HSSFRow row = sheet.createRow(i);  
                     // 开始创建单元格并赋值  
-                   
+               
                     Cell0 = row.createCell(0);  
-                    Cell0.setCellValue(rs6.getString("Odate")); 
+                    Cell0.setCellValue(rs6.getString("date")); 
                     Cell1 = row.createCell(1);  
                     Cell1.setCellValue(rs6.getString("Sample_ID")); 
                     Cell2 = row.createCell(2);  
-                    Cell2.setCellValue(rs6.getFloat("Photo_Name")); 
+                    Cell2.setCellValue(rs6.getString("Photo_Name")); 
                     Cell3 = row.createCell(3);  
                     Cell3.setCellValue(rs6.getString("Photo_Location")); 
                     Cell4 = row.createCell(4);  

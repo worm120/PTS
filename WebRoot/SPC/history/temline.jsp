@@ -30,9 +30,9 @@
 			{s=request.getParameter("s").toString();}
 			if(request.getParameter("f")!=null)
 			{f=request.getParameter("f").toString();}
-			System.out.print(did);
-			System.out.print(s);
-			System.out.print(f);
+// 			System.out.print(did);
+// 			System.out.print(s);
+// 			System.out.print(f);
 		
 		%>
 	
@@ -69,7 +69,9 @@ $(document).ready(function(){
         	int record_num=100;
         	System.out.print("1");
         	//String sql_get_num="select count(*) from TemperatureHistory a,Sample b,SampleAllocate c where a.Date between '"+s+"' and '"+f+"' and b.Device_ID='"+did+"' and b.Sample_Type='01' and c.Sample_Type=b.Sample_Type and a.Sample_ID=b.Sample_ID and b.Sample_ID=c.Sample_ID";
-        	String sql_get_num="select count(*) from TemperatureHistory a,Sample b where a.Date between '"+s+"' and '"+f+"' and b.Device_ID='"+did+"' and b.Sample_Type='01' and a.Sample_ID=b.Sample_ID ";
+        	String sql_get_num="select count(*) from TemperatureHistory a,Sample b where a.Date between '"+
+        						s+"' and '"+f+"' and b.Device_ID='"+did+
+        						"' and b.Sample_Type='01' and a.Sample_ID=b.Sample_ID ";
         	ResultSet rs3=stmt.executeQuery(sql_get_num);
         	if(rs3!=null)
         	{
@@ -78,14 +80,17 @@ $(document).ready(function(){
         			record_num=rs3.getInt(1);
         		}
         	}
-        	System.out.print("record_num:"+record_num);
+//         	System.out.print("record_num:"+record_num);
            int i=0;
 			//String xdate[][]=new String[100][100];float ydate[][]=new float[100][100];
 			int xteam[]=new int[record_num+1];
 			String xthree[]=new String[record_num+1];
-			String xdate[][]=new String[record_num+1][record_num+1];float ydate[][]=new float[record_num+1][record_num+1];
+			String xdate[][]=new String[record_num+1][record_num+1];
+			float ydate[][]=new float[record_num+1][record_num+1];
 			//String sql3="select distinct a.Sample_ID,c.Id,c.Three_ID  from TemperatureHistory a,Sample b,SampleAllocate c where a.Date between '"+s+"' and '"+f+"' and b.Device_ID='"+did+"' and b.Sample_Type='01' and c.Sample_Type=b.Sample_Type and a.Sample_ID=b.Sample_ID and b.Sample_ID=c.Sample_ID order by c.Id";
-			String sql3="select distinct a.Sample_ID  from TemperatureHistory a,Sample b where a.Date between '"+s+"' and '"+f+"' and b.Device_ID='"+did+"' and b.Sample_Type='01' and a.Sample_ID=b.Sample_ID ";
+			String sql3="select distinct a.Sample_ID,b.Sample_Name  from TemperatureHistory a,Sample b where a.Date between '"+
+						s+"' and '"+f+"' and b.Device_ID='"+did+
+						"' and b.Sample_Type='01' and a.Sample_ID=b.Sample_ID ";
 			//ResultSet rs3=myDBBean.query(sql3);
 			rs3=stmt.executeQuery(sql3);
 			int j,l,m;
@@ -95,39 +100,44 @@ $(document).ready(function(){
 				while(rs3.next())
 				{
 					
-				 xdate[j][0]=rs3.getString("Sample_ID");
-				// xteam[j]=rs3.getInt("Id");
-				// xthree[j]=rs3.getString("Three_ID");
-				 j++;
+				 	xdate[j][0]=rs3.getString("Sample_Id");//采样点id
+				 	xthree[j]=rs3.getString("Sample_Name");//采样点名称，名称不能用于json的key
+					// xteam[j]=rs3.getInt("Id");
+					// xthree[j]=rs3.getString("Three_ID");
+					j++;
 				}
 			}
 			int js[]=new int[record_num];
 			String sql4;
 			for(l=0;l<j;l++){
-			m=1;
-			sql4="select Date,TemValue from TemperatureHistory where Date between '"+s+"' and '"+f+"' and Sample_ID='"+xdate[l][0]+"'";
-			 rs3=stmt.executeQuery(sql4);
-			if(rs3!=null){
-			while(rs3.next()){
-			xdate[l][m]=rs3.getString("Date");
-			ydate[l][m]=rs3.getFloat("TemValue");
-			m++;
-			}
-			js[l]=m;
-			}
+				m=1;
+				sql4="select Date,TemValue from TemperatureHistory where Date between '"+s
+					+"' and '"+f+"' and Sample_ID='"+xdate[l][0]+"'";
+				rs3=stmt.executeQuery(sql4);
+				if(rs3!=null){
+					while(rs3.next()){
+						xdate[l][m]=rs3.getString("Date");
+						ydate[l][m]=rs3.getFloat("TemValue");
+						m++;
+					}
+					js[l]=m;
+				}
 			}
 			rs3.close();
 			//rs4.close();
 			stmt.close();conn.close();
 			
            for(int k=0;k<j;k++){
-            out.print("'"+xdate[k][0]+"':{");
-            //out.print("label:'"+xdate[k][0]+"',team:'第"+xteam[k]+"组"+xthree[k]+"',data:[");
-            out.print("label:'"+xdate[k][0]+"',data:[");
-            //out.print("data:(function() {var data = [];");
-            for (i=1;i<js[k];i++) 
-            	out.print("["+i+","+ydate[k][i]+",'"+xdate[k][i]+"'],");
-            out.print("]},");
+	            out.print("'"+xdate[k][0]+"':{");
+	            //out.print("label:'"+xdate[k][0]+"',team:'第"+xteam[k]+"组"+xthree[k]+"',data:[");
+// 	            out.print("label:'"+xdate[k][0]+"',data:[");
+				out.print("label:'"+xthree[k]+"',data:[");
+	            //out.print("data:(function() {var data = [];");
+	            for (i=1;i<js[k];i++) 
+	            	out.print("["+i+","+ydate[k][i]+",'"+xdate[k][i]+"'],");
+	            if(k!=j-1)
+	            out.print("]},");
+	            else out.print("]}");
             }
           
            %>
@@ -178,12 +188,12 @@ $(document).ready(function(){
 
 		// insert checkboxes 
 		var choiceContainer = $("#choices");
-		   $.each(datasets, function(key, val) {
-    	choiceContainer.append('<br/><input type="checkbox" name="' + key +
+		$.each(datasets, function(key, val) {
+    		choiceContainer.append('<br/><input type="checkbox" name="' + key +
                                '"  id="id' + key + '">' +
                                '<label for="id' + key + '">'
                                 + val.label + '</label>');
-    }
+    	}
     );
     choiceContainer.find("input").click(plotAccordingToChoices);
     choiceContainer.find("input").first().attr("checked","checked");
@@ -201,21 +211,21 @@ $(document).ready(function(){
 
 			if (data.length > 0) {
 				$.plot("#placeholder", data, {
-				   series: {
-				lines: {
-					show: true
-				},
-				points: {
-					show: true
-				}
-			},
-			grid: {
-				hoverable: true,
-				clickable: true
-			},
+				   	series: {
+					lines: {
+						show: true
+					},
+					points: {
+						show: true
+					}
+					},
+					grid: {
+						hoverable: true,
+						clickable: true
+					},
 					yaxis: {
-					axisLabel: "温度/℃",
-					 max:100,
+						axisLabel: "温度/℃",
+						max:100,
 						min: 0,
 						tickSize:10
 						//ticks:[0,10,20,30,40,50,60,70,80,90,100]

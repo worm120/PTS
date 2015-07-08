@@ -4,99 +4,126 @@
 <%@ page  import="java.util.*"  import="com.action.dataselect" import="java.text.DateFormat" import="java.text.SimpleDateFormat" import="java.util.Date" %>
 
 <%!
-	void sampleNotExist(String deviceId){
-		float dev_avg_tvalue = 0;
-		//获得temperature表中存在的节点
-		String getSamExsist = "select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and Sample_Type ='01' and "+
-							"Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0)";
-	    //获得temperature表中不存在的节点
-		String getSamNotExsist = "select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and Sample_Type ='01' and "+
-							"Sample_ID not in (select Sample_ID from TemperatureCurrent where TemValue <> 0)";
-		//获得temperature表中该设备存在的点的平均温度
-		String getDevAvaTem = "select Round(AVG(TemValue),0) as tvalue from TemperatureCurrent where "+
-								"Sample_ID in (select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and "+
-								"Sample_Type ='01' and Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and " +
-								"DATEDIFF(mi,Date,GetDate()) between 0 and 15)";
-		dataselect ds=new dataselect();
-    	ResultSet rs=null;	
+// 	void sampleNotExist(String deviceId){
+// 		float dev_avg_tvalue = 0;
+// 		获得temperature表中存在的节点
+// 		String getSamExsist = "select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and Sample_Type ='01' and "+
+// 							"Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0)";
+// 	    获得temperature表中不存在的节点
+// 		String getSamNotExsist = "select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and Sample_Type ='01' and "+
+// 							"Sample_ID not in (select Sample_ID from TemperatureCurrent where TemValue <> 0)";
+// 		获得temperature表中该设备存在的点的平均温度
+// 		String getDevAvaTem = "select Round(AVG(TemValue),0) as tvalue from TemperatureCurrent where "+
+// 								"Sample_ID in (select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and "+
+// 								"Sample_Type ='01') and Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and " +
+// 								"DATEDIFF(mi,Date,GetDate()) between 0 and 15)";
+// 		dataselect ds=new dataselect();
+//     	ResultSet rs=null;	
     	
-    	rs = ds.select(getSamNotExsist);
-	    if (rs == null) return;//如果全部存在就直接返回
+//     	rs = ds.select(getSamNotExsist);
+// 	    if (rs == null) return;//如果全部存在就直接返回
 	    
-	    rs = ds.select(getSamExsist);
-	    if (rs==null){
-	    	sosForOfflineDevice(deviceId);
-	    	return;
-	    }//如果全部不存在返回
+// 	    rs = ds.select(getSamExsist);
+// 	    if (rs==null){
+// 	    	sosForOfflineDevice(deviceId);
+// 	    	return;
+// 	    }//如果全部不存在返回
 	    
-	    rs = ds.select(getDevAvaTem);
+// 	    rs = ds.select(getDevAvaTem);
 		
-	    try
-	    {
-	      if (rs != null) {
-	        while (rs.next())
-	        {
-	           dev_avg_tvalue=rs.getFloat("tvalue");
-	        }
-	      }
+// 	    try
+// 	    {
+// 	      if (rs != null) {
+// 	        while (rs.next())
+// 	        {
+// 	           dev_avg_tvalue=rs.getFloat("tvalue");
+// 	        }
+// 	      }
 	      
-	    }
-	    catch (SQLException e)
-	    {
-	      e.printStackTrace();
-	    }	    	
+// 	    }
+// 	    catch (SQLException e)
+// 	    {
+// 	      e.printStackTrace();
+// 	    }	    	
 	    
 	    
-		rs = ds.select(getSamNotExsist);
-	    try
-	    {
-	      if (rs != null) {
-	        while (rs.next())
-	        {
-	           ds.execute(dev_avg_tvalue, 0, 0,rs.getString("Sample_ID"));
-	        }
-	      }
+// 		rs = ds.select(getSamNotExsist);
+// 	    try
+// 	    {
+// 	      if (rs != null) {
+// 	        while (rs.next())
+// 	        {
+// 	           ds.execute(dev_avg_tvalue, 0, 0,rs.getString("Sample_ID"));
+// 	        }
+// 	      }
 	      
-	    }
-	    catch (SQLException e)
-	    {
-	      e.printStackTrace();
-	    }		
-	    try{	
-	    	rs.close();
-	    	ds.close(); 
-	    }
-	    catch (SQLException e){
-	    	e.printStackTrace();
-	    }
+// 	    }
+// 	    catch (SQLException e)
+// 	    {
+// 	      e.printStackTrace();
+// 	    }		
+// 	    try{	
+// 	    	rs.close();
+// 	    	ds.close(); 
+// 	    }
+// 	    catch (SQLException e){
+// 	    	e.printStackTrace();
+// 	    }
     	
-	}
+// 	}
 	
 	void sampleOvertime(String deviceId){
 		dataselect ds=new dataselect();
     	ResultSet rs=null;	
+    	Random random = new Random();
+    	float avgTem = 0;
     	float dev_avg_tvalue = 0;
-    	//获得temperature表中超时的节点（15分钟的认为掉线）
+    	//获得temperature表中没有超时的节点（10分钟的认为掉线）
 		String getSamNotOverTime = "select Sample_ID from Sample where Sample.Device_ID = '"+ deviceId +"' and Sample_Type ='01' and "+
 							"Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and " + 
-							"DATEDIFF(mi,Date,GetDate()) between 0 and 15)";
+							"DATEDIFF(mi,Date,GetDate()) between 0 and 10)";
 		 //获得temperature表中超时的节点（15分钟的认为掉线）
 		String getSamOverTime = "select Sample_ID from Sample where Sample.Device_ID = '"+ deviceId +"' and Sample_Type ='01' and "+
 							"Sample_ID not in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and" + 
-							"DATEDIFF(mi,Date,GetDate()) between 0 and 15)";
+							"DATEDIFF(mi,Date,GetDate()) between 0 and 10)";
 		//获得temperature表中该设备存在的点的平均温度
 		String getDevAvaTem = "select Round(AVG(TemValue),0) as tvalue from TemperatureCurrent where "+
 								"Sample_ID in (select Sample_ID from Sample where Sample.Device_ID = '"+deviceId+"' and "+
 								"Sample_Type ='01') and Sample_ID in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and " +
-								"DATEDIFF(mi,Date,GetDate()) between 0 and 15)";
+								"DATEDIFF(mi,Date,GetDate()) between 0 and 10)";
 		rs = ds.select(getSamNotOverTime);
-	    if (rs == null) return;//如果全部没有超时就直接返回
+	    try
+	    {
+	      if (rs != null) {
+	      	int i = 0;
+	        while (rs.next())
+	        {
+	           i++;
+	        }
+	        if(i==0){sosForOfflineDevice(deviceId); return;}
+	      }
+	    }
+	    catch (SQLException e)
+	    {
+	      e.printStackTrace();
+	    }//如果全部超时就返回
 	    
     	rs = ds.select(getSamOverTime);
-	    if (rs == null) {
-	    	sosForOfflineDevice(deviceId);
-	    	return;
-	    }//如果全部超时返回
+	    try
+	    {
+	      if (rs != null) {
+	      	int i = 0;
+	        while (rs.next())
+	        {
+	           i++;
+	        }
+	        if(i==0) return;
+	      }
+	    }
+	    catch (SQLException e)
+	    {
+	      e.printStackTrace();
+	    }//如果全部没有超时就直接返回
     	rs = ds.select(getDevAvaTem);
 		
 	    try
@@ -120,7 +147,9 @@
 	      if (rs != null) {
 	        while (rs.next())
 	        {
-	           ds.execute(dev_avg_tvalue, 0, 0,rs.getString("Sample_ID"));
+	        	int r1= random.nextInt()%3;//获得0-2随机数
+	           	avgTem += r1;
+	           	ds.execute(dev_avg_tvalue, 0, 0,rs.getString("Sample_ID"));
 	        }
 	      }
 	    }
@@ -222,7 +251,7 @@
 			{
 				 deviceId = rs.getString("Device_ID");
 				 //1.找出设备下有的点而temperatureCurrent表中没有的点更新为这个设备的平均温度
-				 sampleNotExist(deviceId);
+// 				 sampleNotExist(deviceId);
 				 //2.如果所有的点都在temperatureCurrrent表中存在但是有超过15分钟未更新的节点也更新为这个设备的平均温度
 				 sampleOvertime(deviceId);
 			}
