@@ -70,50 +70,50 @@
         <iframe src="totalalarmf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
         </div>
     
-        <div style="float:left;width:24.5%">
-        <div class="widget-box">
-        	<div class="widget-title"> 
-        		<h5>开关柜温度报警频率对比</h5>
-       		</div>
-        	<div class="widget-content nopadding" id="b" style="height:400px;">
-        	<iframe src="temaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
-        	</div>
+        <div style="float:left;width:49.5%">
+	        <div class="widget-box">
+	        	<div class="widget-title"> 
+	        		<h5>开关柜温度报警频率对比</h5>
+	       		</div>
+	        	<div class="widget-content nopadding" id="b" style="height:400px;">
+	        	<iframe src="temaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
+	        	</div>
+	        </div>
         </div>
-        </div>
-        <div style="float:right;width:75.2%">
-        <div style="float:left;width:33.4%">
-        <div class="widget-box">
-        	<div class="widget-title"> 
-        		<h5>开关柜图片报警频率对比</h5>
-        	</div>
-        	<div class="widget-content nopadding" id="b" style="height:400px;">
-        	<iframe src="picaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
-        	</div>
-        </div>
-        </div>
-        <div style="float:right;width:66.3%">
-        <div style="float:left;width:49.8%">
-        <div class="widget-box">
-        	<div class="widget-title"> 
-        		<h5>开关柜弧光报警频率对比</h5>
-        	</div>
-        	<div class="widget-content nopadding" id="b" style="height:400px;">
-        	<iframe src="arcaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
-        	</div>
-        </div>
-        </div>
-        <div style="float:right;width:49.8%">
-        <div class="widget-box">
-        	<div class="widget-title"> 
-        		<h5>开关柜湿度报警频率对比</h5>
-        	</div>
-        	<div class="widget-content nopadding" id="b" style="height:400px;">
-        	<iframe src="humaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
-        	</div>
-        </div>
-        </div>
-        </div>
-        </div>
+        <div style="float:right;width:49.5%">
+<!-- 	        <div style="float:left;width:33.4%"> -->
+		        <div class="widget-box">
+		        	<div class="widget-title"> 
+		        		<h5>开关柜湿度报警频率对比</h5>
+		        	</div>
+		        	<div class="widget-content nopadding" id="b" style="height:400px;">
+		        	<iframe src="humaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe>
+		        	</div>
+		        </div>
+<!-- 	        </div> -->
+<!-- 	        <div style="float:right;width:66.3%"> -->
+<!-- 		        <div style="float:left;width:49.8%"> -->
+<!-- 			        <div class="widget-box"> -->
+<!-- 			        	<div class="widget-title">  -->
+<!-- 			        		<h5>开关柜弧光报警频率对比</h5> -->
+<!-- 			        	</div> -->
+<!-- 			        	<div class="widget-content nopadding" id="b" style="height:400px;"> -->
+<!-- 			        	<iframe src="arcaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe> -->
+<!-- 			        	</div> -->
+<!-- 			        </div> -->
+<!-- 		        </div> -->
+<!-- 		        <div style="float:right;width:49.8%"> -->
+<!-- 			        <div class="widget-box"> -->
+<!-- 			        	<div class="widget-title">  -->
+<!-- 			        		<h5>开关柜图片报警频率对比</h5> -->
+<!-- 			        	</div> -->
+<!-- 			        	<div class="widget-content nopadding" id="b" style="height:400px;"> -->
+<!-- 			        	<iframe src="picaf.jsp?sid=<%=sid%>" width="100%" height="100%" frameborder="0"></iframe> -->
+<!-- 			        	</div> -->
+<!-- 			        </div> -->
+<!-- 		        </div> -->
+<!-- 	        </div> -->
+<!--         </div> -->
        
         
 	</div>
