@@ -53,7 +53,10 @@ public class remoteGetPic
       }
     }
     dataselect ds = new dataselect();
-    String get_sampleid = "select Sample_IndexID,Sample_AddressH,Sample_AddressL from SampleAddress,Sample where Sample.Sample_ID=SampleAddress.Sample_ID and Sample_Type='00' and Sample_AddressH is not null and Sample_AddressL is not null and Sample_IndexID='" + picid + "'";
+    String get_sampleid = "select Sample_IndexID,Sample_AddressH,Sample_AddressL from "+
+    "SampleAddress,Sample where Sample.Sample_ID=SampleAddress.Sample_ID and"+
+    		" Sample_Type='00' and Sample_AddressH is not null and Sample_AddressL" +
+    " is not null and Sample_IndexID='" + picid + "'";
     ResultSet rs = ds.select(get_sampleid);
     if (rs != null) {
       try
@@ -125,7 +128,9 @@ public class remoteGetPic
     String sample_id = "";
     String photoid = "";
     
-    String get_sampleid = "select Device_Address,SampleAddress.Sample_ID from SampleAddress,Sample where Sample.Sample_ID=SampleAddress.Sample_ID and Sample_Type='00' and Sample_IndexID='" + picid + "'";
+    String get_sampleid = "select Device_Address,SampleAddress.Sample_ID"+
+    " from SampleAddress,Sample where Sample.Sample_ID=SampleAddress.Sample_ID and" +
+    		" Sample_Type='00' and Sample_IndexID='" + picid + "'";
     
     rs = ds.select(get_sampleid);
     try
@@ -144,7 +149,9 @@ public class remoteGetPic
     }
     if ((!sample_id.equals("")) && (sample_id != null))
     {
-      String insertPic = "insert into Photo(Sample_ID,Photo_Name,Photo_Location,Date) values('" + sample_id + "','" + picname + "','../images/photo/" + picname + "','" + time.toLocaleString() + "')";
+      String insertPic = "insert into Photo(Sample_ID,Photo_Name,Photo_Location,Date) values('" + 
+    		  	sample_id + "','" + picname + "','../images/photo/" + 
+    		  picname + "','" + time.toLocaleString() + "')";
       
       int k = ds.update(insertPic);
       /*if (k > 0)

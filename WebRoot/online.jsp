@@ -187,7 +187,7 @@
                         <!--<i class="icon icon-sort-down"></i>-->
                     </a>
                 </li>
-                <li style="display:none;" class="topmenu-ul-li">
+                <li class="topmenu-ul-li">
                     <a onclick="history()">
                         <i class="icon-bar-chart"></i>
                         <span class="usermenulispan">历史数据</span>

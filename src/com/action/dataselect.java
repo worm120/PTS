@@ -15,9 +15,9 @@ import javax.sql.DataSource;
 public class dataselect
 {
 	//String url = "jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=Electricity_Monitoring_System";
-	String url = "jdbc:sqlserver://172.16.93.254:1433;DatabaseName=SDB";
+	String url = "jdbc:sqlserver://localhost:1433;DatabaseName=SDB";
     String username = "sa";
-    String password = "lwg123456";
+    String password = "qiye016700";
 	Connection conn=null;
 	Statement stmt=null;
 	ResultSet rs=null;

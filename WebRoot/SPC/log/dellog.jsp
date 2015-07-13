@@ -69,13 +69,13 @@
 				<p align="center">
             		<font size="4">选择要删除的日志表：</font>
             		&nbsp&nbsp&nbsp
-            		<input type="checkbox" name="oplog" id="oplog" value="操作日志"/>&nbsp<font size="3">操作日志</font>
-            		&nbsp&nbsp
+<!--             		<input type="checkbox" name="oplog" id="oplog" value="操作日志"/>&nbsp<font size="3">操作日志</font> -->
+<!--             		&nbsp&nbsp -->
             		<input type="checkbox" name="temlog" id="temlog" value="温度报警日志"/>&nbsp<font size="3">温度报警日志</font>
-            		&nbsp&nbsp
-            		<input type="checkbox" name="piclog" id="piclog" value="图片报警日志"/>&nbsp<font size="3">图片报警日志</font>
-            		&nbsp&nbsp
-            		<input type="checkbox" name="arclog" id="arclog" value="弧光报警日志"/>&nbsp<font size="3">弧光报警日志</font>
+<!--             		&nbsp&nbsp -->
+<!--             		<input type="checkbox" name="piclog" id="piclog" value="图片报警日志"/>&nbsp<font size="3">图片报警日志</font> -->
+<!--             		&nbsp&nbsp -->
+<!--             		<input type="checkbox" name="arclog" id="arclog" value="弧光报警日志"/>&nbsp<font size="3">弧光报警日志</font> -->
             		&nbsp&nbsp
             		<input type="checkbox" name="humlog" id="humlog" value="湿度报警日志"/>&nbsp<font size="3">湿度报警日志</font>
 				</p>

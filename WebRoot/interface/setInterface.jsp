@@ -67,9 +67,9 @@
         <form action="setInterface.jsp" method="post" id="formsub">
         <div id="content-field">
             <div class="box-title">
-                <div class="select">
-                	<div class="selectname">接口图片存储文件夹路径：</div><div class="selectCon"><input class="selectInput" style=" width: 400px;" type="text" name="Imagepath" id="Imagepath" value="<%=Imagepath %>"></div><div class="selectname">例如H:\apache-tomcat-6.0.14\webapps\PTS\images\;选择tomcat服务器下的PTS\images\</div>
-                </div>
+<!--                 <div class="select"> -->
+<!--                 	<div class="selectname">接口图片存储文件夹路径：</div><div class="selectCon"><input class="selectInput" style=" width: 400px;" type="text" name="Imagepath" id="Imagepath" value="<%=Imagepath %>"></div><div class="selectname">例如H:\apache-tomcat-6.0.14\webapps\PTS\images\;选择tomcat服务器下的PTS\images\</div> -->
+<!--                 </div> -->
 				<br>
                 <div class="select">
                 	<div class="selectname">系统周期抓拍开始时间：</div><div class="selectCon"><input class="selectInput" style=" width: 400px;" type="text" name="imgStartTime" id="imgStartTime" value="<%=imgStartTime %>"></div><div class="selectname">例如06:00:00,全部为英文输入法，格式hh:mm:ss即时分秒</div>

@@ -84,7 +84,7 @@
 							"DATEDIFF(mi,Date,GetDate()) between 0 and 10)";
 		 //获得temperature表中超时的节点（15分钟的认为掉线）
 		String getSamOverTime = "select Sample_ID from Sample where Sample.Device_ID = '"+ deviceId +"' and Sample_Type ='01' and "+
-							"Sample_ID not in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and" + 
+							"Sample_ID not in (select Sample_ID from TemperatureCurrent where TemValue <> 0 and " + 
 							"DATEDIFF(mi,Date,GetDate()) between 0 and 10)";
 		//获得temperature表中该设备存在的点的平均温度
 		String getDevAvaTem = "select Round(AVG(TemValue),0) as tvalue from TemperatureCurrent where "+
@@ -142,6 +142,7 @@
 	    
 	    
 		rs = ds.select(getSamOverTime);
+		System.out.println(getSamOverTime+"\n");
 	    try
 	    {
 	      if (rs != null) {
@@ -149,6 +150,7 @@
 	        {
 	        	int r1= random.nextInt()%3;//获得0-2随机数
 	           	avgTem += r1;
+	           	System.out.println(rs.getString("Sample_ID")+"\n");
 	           	ds.execute(dev_avg_tvalue, 0, 0,rs.getString("Sample_ID"));
 	        }
 	      }
@@ -191,6 +193,7 @@
 	    }	
 	    
 	    rs = ds.select(getSam);
+	    System.out.println(getSam);
 	    try
 	    {
 	      if (rs != null) {
@@ -198,6 +201,7 @@
 	        {
 	           int r1= random.nextInt()%3;//获得0-2随机数
 	           avgTem += r1;
+	           System.out.println(rs.getString("Sample_ID"));
 	           ds.execute(avgTem, 0, 0,rs.getString("Sample_ID"));
 	        }
 	      }
@@ -249,6 +253,7 @@
 		{
 			while(rs.next())
 			{
+				System.out.println(rs.getString("Device_ID"));
 				 deviceId = rs.getString("Device_ID");
 				 //1.找出设备下有的点而temperatureCurrent表中没有的点更新为这个设备的平均温度
 // 				 sampleNotExist(deviceId);

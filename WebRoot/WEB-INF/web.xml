@@ -335,7 +335,10 @@
     <servlet-name>setPhotoAlarm</servlet-name>
     <servlet-class>com.online.setPhotoAlarm</servlet-class>
   </servlet>
-
+<servlet>
+	<servlet-name>findDeviceNotExsist</servlet-name>
+	<servlet-class>com.online.findDeviceNotExsist</servlet-class>
+</servlet>
 
 
 
@@ -415,6 +418,10 @@
     <url-pattern>/servlet/showOnlineDevice</url-pattern>
   </servlet-mapping>	
 
+  <servlet-mapping>
+  	<servlet-name>findDeviceNotExsist</servlet-name>
+  	<url-pattern>/servlet/findDeviceNotExsist</url-pattern>
+  </servlet-mapping>
 
 
 

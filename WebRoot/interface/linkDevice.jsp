@@ -34,8 +34,8 @@
                 <div class="select">
                 	<div class="selectname">设备编号：</div><div class="selectCon"><input class="selectInput" type="text" name="SDeviceId" id="SDeviceId"></div>
                 	<div class="selectname">设备名称：</div><div class="selectCon"><input class="selectInput"  type="text" name="SDeviceName" id="SDeviceName"></div>
-                	<div class="selectname">设备id：</div><div class="selectCon"><input class="selectInput"  type="text" name="SDevice_Addr" id="SDevice_Addr"></div>
-                	<div class="selectname">IP：</div><div class="selectCon"><input class="selectInput"  type="text" name="SDevice_IP" id="SDevice_IP"></div>
+<!--                 	<div class="selectname">设备id：</div><div class="selectCon"><input class="selectInput"  type="text" name="SDevice_Addr" id="SDevice_Addr"></div> -->
+<!--                 	<div class="selectname">IP：</div><div class="selectCon"><input class="selectInput"  type="text" name="SDevice_IP" id="SDevice_IP"></div> -->
                 	<div class="selectname">变电所：</div>
                 	<div class="selectCon">
                 		<select name="seceltSubstationID" id="seceltSubstationID">

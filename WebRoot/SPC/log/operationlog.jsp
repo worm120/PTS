@@ -406,7 +406,7 @@ $('#fdate').datepicker();
   		{ 
   			document.getElementById("first").setAttribute("disabled","disabled");
          	document.getElementById("pre").setAttribute("disabled","disabled"); 
-         }
+        }
 		else
 		{
 			document.getElementById("first").removeAttribute("disabled","disabled");

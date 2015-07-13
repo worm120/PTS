@@ -139,20 +139,20 @@
                     <a onclick="show('jiben')" ><i class="icon icon-user"></i><span class="usermenulispan">基本参数</span><i class="icon-sort-down"></i></a> 
                 </li>
                 
-                <li class="topmenu-ul-li">
-                    <a onclick="show('baojing')">
-                        <i class="icon icon-cog"></i>
-                        <span class="usermenulispan">报警参数</span>
+<!--                 <li class="topmenu-ul-li"> -->
+<!--                     <a onclick="show('baojing')"> -->
+<!--                         <i class="icon icon-cog"></i> -->
+<!--                         <span class="usermenulispan">报警参数</span> -->
                         <!--<i class="icon icon-sort-down"></i>-->
-                    </a>
-                </li>
+<!--                     </a> -->
+<!--                 </li> -->
                 
                 <li class="topmenu-ul-li">
-                    <a onclick="showAllScreen()">
+<!--                     <a onclick="showAllScreen()"> -->
                         <i class="icon icon-cog"></i>
-                        <span class="usermenulispan">全屏显示</span>
+                        <span class="usermenulispan">按F11全屏</span>
                         <!--<i class="icon icon-sort-down"></i>-->
-                    </a>
+<!--                     </a> -->
                 </li>
             
                 <li class="topmenu-ul-li">

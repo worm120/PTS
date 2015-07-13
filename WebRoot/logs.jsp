@@ -154,13 +154,13 @@
                         <!--<i class="icon icon-sort-down"></i>-->
                     </a>
                 </li>
-                <li class="topmenu-ul-li">
-                    <a onclick="show('caozuo')">
-                        <i class="icon icon-cog"></i>
-                        <span class="usermenulispan">操作日志</span>
+<!--                 <li class="topmenu-ul-li"> -->
+<!--                     <a onclick="show('caozuo')"> -->
+<!--                         <i class="icon icon-cog"></i> -->
+<!--                         <span class="usermenulispan">操作日志</span> -->
                         <!--<i class="icon icon-sort-down"></i>-->
-                    </a>
-                </li>
+<!--                     </a> -->
+<!--                 </li> -->
                 <li class="topmenu-ul-li">
                     <a onclick="show('del')">
                         <i class="icon icon-cog"></i>

@@ -8,6 +8,7 @@
 <%@page import="java.io.*"%> 
 <html lang="en">
 <head>
+	<title>大成DSEP-2000电力图像智能与温湿度安全监测系统</title>
 	<link href="../css/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">  
     <link  rel="stylesheet" type="text/css" href="../css/add.css">
 	<link href="../css/jquery.jqplot.css" rel="stylesheet" type="text/css">

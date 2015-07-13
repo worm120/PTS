@@ -40,19 +40,23 @@ public class operationlog extends HttpServlet {
 		{currentPage = Integer.parseInt(request.getParameter("cp")) ;}
 		if(request.getParameter("pldel")!=null)
 		{pldel = request.getParameter("pldel") ;}
-		  int l=pldel.length();int i=1,k=0;
+		  int l=pldel.length();
+		  int i=1,k=0;
 		  String a[]=new String[l];
 		  for(int j=0;j<l;j++){a[j]="";}
-		  if(l!=0){
-		  while(i<l)
-		  {
-		  	if(pldel.charAt(i)!='a'){
-		  	a[k]=a[k]+pldel.charAt(i);
-		  	i++;
+		  if(l!=0)
+		  {	  
+			  while(i<l)
+			  {
+			  	if(pldel.charAt(i)!='a')
+			  	{	
+				  	a[k]=a[k]+pldel.charAt(i);
+				  	i++;
+			  	}
+			  	else{i++;k++;}
+			  }
+			  k++;
 		  }
-		  else{i++;k++;}
-		  }
-		  k++;}
 		 String pl[]=new String[k];
 		 //System.out.print(pl.length);
 		 for(i=0;i<pl.length;i++){pl[i]=a[i];}
@@ -64,7 +68,8 @@ public class operationlog extends HttpServlet {
 			Statement stmt=conn.createStatement();
 			
 			int rc=0;
-			String sql5="select * from Logs a,Users b,ACL c where a.OTim between '"+s+"' and '"+f+"' and a.UID=b.User_Login and b.User_Login=c.User_ID and c.Substation_ID='"+sid+"'";
+			String sql5="select * from Logs a,Users b,ACL c where a.OTim between '"+s+"' and '"+f
+					+"' and a.UID=b.User_Login and b.User_Login=c.User_ID and c.Substation_ID='"+sid+"'";
 			ResultSet rs5=stmt.executeQuery(sql5);
 			if(rs5!=null){while(rs5.next()){rc++;}}
 			
@@ -74,7 +79,15 @@ public class operationlog extends HttpServlet {
 			//System.out.print(ys);
 			int key;
 			String sql7="";
-			if(k!=0){for(i=0;i<1;i++){if(pl[i].equals("0")==true & currentPage==ys){currentPage=currentPage-1;}}}
+			if(k!=0){
+				for(i=0;i<1;i++)
+				{
+					if(pl[i].equals("0")==true & currentPage==ys)
+					{
+						currentPage=currentPage-1;
+					}
+				}
+			}
 			for(i=0;i<pl.length;i++)
 			{	
 				if(pl[i].equals("0")==false)

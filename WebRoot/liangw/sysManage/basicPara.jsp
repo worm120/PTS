@@ -407,7 +407,7 @@ function cancle() {
 							<td width=16% align=left>
 								<ol id="need">
 									<li>
-										<input type="text" id="picRate" title="（d/小时）">&nbsp;&nbsp;（d/小时）
+										<input type="text" id="picRate" title="（d/小时）">&nbsp;&nbsp;（h/小时）
 									</li>
 								</ol>
 							</td>
