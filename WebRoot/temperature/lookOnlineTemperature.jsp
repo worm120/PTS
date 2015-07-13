@@ -129,15 +129,15 @@
 	      <li><a href="#" id="recentHu">最近弧光</a></li>
 <!-- 	      <li style="display:none;"><a href="#" id="qianghu">强弧</a></li>  -->
 <!-- 	      <li style="display:none;"><a href="#" id="ruohu">弱弧</a></li>  -->
-<!--       <li style="display:none;"><a href="#" id="huguang">历史记录</a></li>  -->
+<!--           <li style="display:none;"><a href="#" id="huguang">历史记录</a></li>  -->
 	    </ul> 
 	  </li> 
 	  <!-- <li><a href="#" id="canshuSet">参数设置</a>  -->
 	  </li> 
-<!-- 	  <li style="display:none;"><a href="#" id="alarmTong">报警数据分析</a>  -->
-<!-- 	  </li> -->
-<!-- 	   <li style="display:none;"><a href="#" id="health">健康状况评估</a>  -->
-<!-- 	  </li> -->
+	  <li style="display:none;"><a href="#" id="alarmTong">报警数据分析</a> 
+	  </li>
+	   <li style="display:none;"><a href="#" id="health">健康状况评估</a> 
+	  </li>
 	  <li id="devinfo"><a href="#" id="nodeinfo">开关柜信息</a></li> 
 	</ul>
 	<!-- 显示环境温、湿度 -->

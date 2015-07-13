@@ -426,15 +426,9 @@ function show_menu(evt) {
     {
     	if(svgNodeId==result[i].getElementsByTagName("svgid")[0].childNodes[0].nodeValue)
     	{
-    		//如果没有湿度设备就不显示湿度菜单
-    		if(parseInt(result[i].getElementsByTagName("humNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("huminfo").style.display = "none";
-    		//如果没有图像设备就不显示图像菜单
-    		if(parseInt(result[i].getElementsByTagName("picNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("picinfo").style.display = "none";
-    		//如果没有弧光设备就不显示弧光
-    		if(parseInt(result[i].getElementsByTagName("arcNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("arcinfo").style.display = "none";
+
+
+
     		document.getElementById("menu").style.display = "block";
     		document.getElementById("menu").style.left = x;
     		document.getElementById("menu").style.top = y;
@@ -453,35 +447,45 @@ function show_menu(evt) {
     		document.getElementById("alarmLogTem").addEventListener("click",alarmLogTempWindow, false);
     		// document.getElementById("samSelect").addEventListener("click",
     		// searchNodeInfo, false);
+    		//如果没有湿度设备就不显示湿度菜单
+    		if(parseInt(result[i].getElementsByTagName("humNum")[0].childNodes[0].nodeValue)==0)
+    			document.getElementById("huminfo").style.display = "none";
+    		else{
+	    		document.getElementById("currentHum").addEventListener("click", currentHum,false);
+	    		document.getElementById("historyHum").addEventListener("click", historyHum,false);
+	    		document.getElementById("alarmLogHum").addEventListener("click",alarmLogHum, false);
+    		}
     		
-
-    		document.getElementById("currentHum").addEventListener("click", currentHum,false);
-    		document.getElementById("historyHum").addEventListener("click", historyHum,false);
-    		document.getElementById("alarmLogHum").addEventListener("click",alarmLogHum, false);
-    		
-
-    		document.getElementById("picSet").addEventListener("click", picSet, false);	
-    		document.getElementById("picCmp").addEventListener("click", picCmp, false);
-    		document.getElementById("dataManage").addEventListener("click", dataManage,false);
-    		document.getElementById("alarmDeal").addEventListener("click", alarmDeal, false);
-    		document.getElementById("getRemotePic").addEventListener("click",getRemotePic, false);
-    		document.getElementById("setAlarm").addEventListener("click", setAlarm, false);
-    		
+    		//如果没有图像设备就不显示图像菜单
+    		if(parseInt(result[i].getElementsByTagName("picNum")[0].childNodes[0].nodeValue)==0)
+    			document.getElementById("picinfo").style.display = "none";
+    		else{
+//	    		document.getElementById("picSet").addEventListener("click", picSet, false);	
+//	    		document.getElementById("picCmp").addEventListener("click", picCmp, false);
+	    		document.getElementById("dataManage").addEventListener("click", dataManage,false);
+//	    		document.getElementById("alarmDeal").addEventListener("click", alarmDeal, false);
+	    		document.getElementById("getRemotePic").addEventListener("click",getRemotePic, false);
+//	    		document.getElementById("setAlarm").addEventListener("click", setAlarm, false);
+    		}
     		// document.getElementById("canshuSet").addEventListener("click", canshuSet,
     		// false);
-    		document.getElementById("alarmTong").addEventListener("click",TemperatureStatistics, false);
+//    		document.getElementById("alarmTong").addEventListener("click",TemperatureStatistics, false);
 
     		//document.getElementById("historyPic").addEventListener("click", historyPic,false);
-    		document.getElementById("health").addEventListener("click", health, false);
+//    		document.getElementById("health").addEventListener("click", health, false);
 
-    		document.getElementById("huguang").addEventListener("click", huguang, false);
-    		document.getElementById("qianghu").addEventListener("click", qianghu, false);
-    		document.getElementById("ruohu").addEventListener("click", ruohu, false);
-    		document.getElementById("recentHu").addEventListener("click", recentHu, false);
-
+    		//如果没有弧光设备就不显示弧光
+    		if(parseInt(result[i].getElementsByTagName("arcNum")[0].childNodes[0].nodeValue)==0)
+    			document.getElementById("arcinfo").style.display = "none";
+    		else{
+//	    		document.getElementById("huguang").addEventListener("click", huguang, false);
+//	    		document.getElementById("qianghu").addEventListener("click", qianghu, false);
+//	    		document.getElementById("ruohu").addEventListener("click", ruohu, false);
+	    		document.getElementById("recentHu").addEventListener("click", recentHu, false);
+    		}
     		
     		//阻止冒泡
-    		evt.cancelBubble = true;
+    		//evt.cancelBubble = true;
     	}// svgid
     	
     }
@@ -750,6 +754,8 @@ function closing()// 菜单关闭
 	document.getElementById("menu").style.display = "none";
 }
 
+
+//获得相关节点下各设备的数量以决定点击菜单的显示
 function ajaxFindDeviceNotExsist()
 {
 	var svgdoc =document.getElementById("emSvg").getSVGDocument();
@@ -797,5 +803,5 @@ function ajaxFindDeviceNotExsist()
 		
 		return s;
 
-		}
+	}
 }
