@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -39,8 +40,10 @@ public class remoteGetPic
     String picid = request.getParameter("index_id");
     String fName = "none";
     String imgpath = "";
+    dataselect ds = new dataselect();
+    ResultSet rs;
     String picurl = request.getSession().getServletContext().getRealPath("") + "\\liangw\\images\\";
-    
+    String station_name="";
     File fileDir = new File(picurl + "photo\\");
     if (!fileDir.exists()) {
       try
@@ -52,12 +55,25 @@ public class remoteGetPic
         e.printStackTrace();
       }
     }
-    dataselect ds = new dataselect();
+    String get_station_name = "select Substation_Name from Substation";
+    rs=ds.select(get_station_name);
+    if(rs!=null)
+    {
+    	try {
+			if(rs.next())
+			{
+				station_name=rs.getString("Substation");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     String get_sampleid = "select Sample_IndexID,Sample_AddressH,Sample_AddressL from "+
     "SampleAddress,Sample where Sample.Sample_ID=SampleAddress.Sample_ID and"+
     		" Sample_Type='00' and Sample_AddressH is not null and Sample_AddressL" +
     " is not null and Sample_IndexID='" + picid + "'";
-    ResultSet rs = ds.select(get_sampleid);
+    rs = ds.select(get_sampleid);
     if (rs != null) {
       try
       {
@@ -74,7 +90,14 @@ public class remoteGetPic
           String picname = picid + "_" + format.format(time) + ".jpg";
           fName = picname;
           
-          boolean k = getImg(Sample_AddressH, Sample_AddressL, picurl, imgpath);
+          boolean k;
+          if(station_name.equalsIgnoreCase("大唐南京发电厂")||station_name.equals("大连恩泽变电所"))
+          {
+        	  k = getImg(Sample_AddressH, Sample_AddressL, picurl, imgpath);
+          }else
+          {
+        	  k = getImgQiaoan(Sample_AddressH, Sample_AddressL, picurl, imgpath);
+          }
           if (k) {
             picSQL(picid, picname, picurl);
           }
@@ -92,7 +115,30 @@ public class remoteGetPic
     out.close();
   }
   
-  public void init()
+  private boolean getImgQiaoan(String ip, String port,
+		String path, String imageName)
+  {
+	    boolean flag = false;
+	    Runtime rn = Runtime.getRuntime();
+	    Process p = null;
+	    try
+	    {
+	      String imgName = imageName;
+	      String exePath = path + "Debug_qiaoan\\testsdk.exe";
+	      String cmd = exePath + " " + ip + " " + port + " " + imgName;
+	      p = rn.exec(cmd);
+	      p.waitFor();
+	      flag = true;
+	    }
+	    catch (Exception e)
+	    {
+	      return flag;
+	    }
+	    return flag;
+  }
+
+
+public void init()
     throws ServletException
   {}
   
@@ -121,7 +167,8 @@ public class remoteGetPic
     throws SQLException
   {
     Date time = new Date();
-    DateFormat format = new SimpleDateFormat("yyMMddHHmmss");
+    DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    Calendar c=Calendar.getInstance();
     dataselect ds = new dataselect();
     ResultSet rs = null;
     String device_Address = "";
@@ -151,7 +198,7 @@ public class remoteGetPic
     {
       String insertPic = "insert into Photo(Sample_ID,Photo_Name,Photo_Location,Date) values('" + 
     		  	sample_id + "','" + picname + "','../images/photo/" + 
-    		  picname + "','" + time.toLocaleString() + "')";
+    		  picname + "','" + format.format(c.getTime()) + "')";
       
       int k = ds.update(insertPic);
       /*if (k > 0)

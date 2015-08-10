@@ -168,6 +168,9 @@
 		    					else if(rs.getString("Sample_Type").equals("00"))
 		    					{
 		    						type="Í¼Ïñ";
+		    					}else if(rs.getString("Sample_Type").equals("02"))
+		    					{
+		    						type="»¡¹â";
 		    					}
 		    					if(rs.getString("Sample_ID")!=null&&rs.getString("Sample_ID").equals("null")==false)
 		    					{

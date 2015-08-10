@@ -768,19 +768,68 @@ public class PicManageBean extends dataselect {
 		return null;
 	}
 
+	//获取照片数量
+	public int getPicNum() 
+	{
+		Connection conn = this.getCon();
+		ResultSet rs;
+		PreparedStatement pstmt;
+		int num=0;
+		String getPicCount="select count(*) from Photo";
+		try {
+			pstmt=conn.prepareStatement(getPicCount);
+			rs=pstmt.executeQuery();
+			if(rs!=null)
+				if(rs.next())
+					num=rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+		
+	}
+	//获取有关采样点下的图片数量
+	public int getSamplePicNum(String sampleid)
+	{
+		Connection conn = this.getCon();
+		ResultSet rs;
+		PreparedStatement pstmt;
+		int num=0;
+		String getPicCount="select count(*) from Photo where Sample_ID = ?";
+		try {
+			pstmt=conn.prepareStatement(getPicCount);
+			pstmt.setString(1, sampleid);
+			rs=pstmt.executeQuery();
+			if(rs!=null)
+				if(rs.next())
+					num=rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
 	// 根据变电所和开关柜查找数据库里的图像信息,返回的是list类型的结果集
-	public List<PicManage> inqueryDevice(String deviceid, String subid) {
+	public List<PicManage> inqueryDevice(String deviceid, String subid,int pageIndex) {
 		deviceid = getDeviceId(deviceid);
 		try {
 			Connection conn = this.getCon();
-			String sql = "select * from Photo,Device,Substation,Sample where Photo.Sample_ID=Sample.Sample_ID and "
+			ResultSet rs;
+			PreparedStatement pstmt;	
+			
+			String sql = "select top 12 * from Photo,Device,Substation,Sample where Photo.Sample_ID=Sample.Sample_ID and "
 					+ "Substation.Substation_ID= Sample.Substation_ID and Sample.Device_ID = Device.Device_ID "
 					+ "and Device.Device_ID=? and Substation.Substation_ID=? "
+					+ "and Date not in(select top "+pageIndex*12+" Date from Photo order by Date desc)"
 					+ "order by Substation.Substation_ID,Date desc";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, deviceid);
 			pstmt.setString(2, subid);
-			ResultSet rs = pstmt.executeQuery();
+			
+			rs = pstmt.executeQuery();
 			List<PicManage> list = new ArrayList<PicManage>();
 			while (rs.next()) {
 				PicManage picmanage = new PicManage();
@@ -812,15 +861,16 @@ public class PicManageBean extends dataselect {
 
 	// 根据变电所和开关柜以及采样点查找数据库里的图像信息,返回的是list类型的结果集
 	public List<PicManage> inquerySample(String sampleid, String subid,
-			String deviceid) {
+			String deviceid,int pageIndex) {
 		deviceid = getDeviceId(deviceid);
 		try {
 			Connection conn = this.getCon();
 
-			String sql = "select * from Photo,Substation,Device,Sample where Photo.Sample_ID=Sample.Sample_ID and "
+			String sql = "select top 12 * from Photo,Substation,Device,Sample where Photo.Sample_ID=Sample.Sample_ID and "
 					+ "Substation.Substation_ID= Sample.Substation_ID and Sample.Device_ID = Device.Device_ID "
 					+ "and Substation.Substation_ID=? and Device.Device_ID=? and "
-					+ "Sample.Sample_ID=? order by Substation.Substation_ID";
+					+ "Sample.Sample_ID=? "+ "and Date not in(select top "+pageIndex*12+" Date from Photo order by Date desc)"
+					+"order by Substation.Substation_ID,Date desc";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, subid);
 			pstmt.setString(2, deviceid);

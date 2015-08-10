@@ -30,7 +30,7 @@ html,body{ background-color: #eeeeee; margin: 0px; padding: 0px; font-size:12px;
 .checkall1{line-height: 30px;margin: 10px;float: left;}
 .quanxuan{line-height: 30px;margin:0 px;float: left;}
 .checktitle{float: left;position: relative;margin: 0px 10px; line-height: 30px;}
-.box-content{padding: 0px;border-bottom: 1px solid #cdcdcd;font-size: 12px; color: #666; width: 100%; position: relative;margin: 0px;overflow-y: auto;min-height:100%;}
+.box-content{padding: 0px;border-bottom: 1px solid #cdcdcd;font-size: 12px; color: #666; width: 100%; position: relative;margin: 0px;overflow-y: auto;height:200px}
 .table-style{border:0px; margin-bottom: 0px;border-spacing: 0px;width: 100%; background-color: transparent;position: relative;}
 .table-style-th{vertical-align: bottom;height: 20px;padding: 5px 10px 2px;border-bottom: 0px;text-align:left;color: #666666;background-color: #efefef;border-left: 1px solid #ddd;font-weight: bold;border-bottom: 1px solid #ddd;font-size:12px;}
 .table-style-th1{vertical-align: middle;height: 20px;padding: 5px 10px 2px;border-bottom: 0px;text-align:left;color: #666666;background-color: #efefef;border-left: 1px solid #ddd;font-weight: bold;border-bottom: 1px solid #ddd;font-size:12px;}

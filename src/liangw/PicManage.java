@@ -3,7 +3,19 @@ package liangw;
 public class PicManage {
 
 	// 属性名称与表单元素相同时，可实现自省(即将表单中的参数值自动赋给JavaBean中的同名属性)
-	int row, id, photoid;
+	int row, id, photoid,number;
+	
+	//获取图片总数量
+	public void setNumber(int number)
+	{
+		this.number= number;
+	}
+	
+	public int getNumber()
+	{
+		return this.number;
+	}
+	
 	// 图片PHOTO表
 	String pid, psampleid, pname, plocation, relocation, pdate, prem, fam,
 			total, rate = null;

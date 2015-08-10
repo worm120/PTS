@@ -23,6 +23,7 @@
 		<script type='text/javascript' src='/PTS/dwr/util.js'></script>
 		<script language="javascript">
 
+var photoPage;
 // 查看图像
 function view(location,name) {
 	document.getElementById("viewpic").src = location;
@@ -186,7 +187,7 @@ function inquery() {
 	var device = '<%=request.getParameter("nodeid")%>';
 	//var substation = '<%=request.getParameter("sid")%>';
 	//var device = document.getElementById("device").value;
-	var sample = document.getElementById("sample").value;
+	var sampleid = document.getElementById("sample").value;
 	//if (substation=="-1") {
 	//	alert("请先选择变电所")
 	//	document.getElementById("substation").focus();
@@ -194,19 +195,21 @@ function inquery() {
 	//if (device=="-1") {
 	//	dataManage.inquerySub(substation,callGetInfer);
 	//}
-	if (sample=="-1") {
-		dataManage.inqueryDevice(device,substation,callGetInfer);
+	if (sampleid=="-1") {
+		inqueryAll();
 	} else {
-		dataManage.inquerySample(sample, substation, device, callGetInfer);
+		var pageDiv = document.getElementById("checkPage");
+    	pageDiv.style.display="block";
+    	first();
+		//dataManage.inquerySample(sampleid,substation,device,0,callGetInfer);
 	}
 }
 
 //查询所有采样点的图像
 function inqueryAll() {
-	var substation = '<%=request.getParameter("sid")%>';
-	var device = '<%=request.getParameter("nodeid")%>';
-	dataManage.inqueryDevice(device,substation,callGetInfer);
-	//window.location.reload();
+    var pageDiv = document.getElementById("checkPage");
+    pageDiv.style.display="block";
+	first();
 }
 
 // 根据开关柜自动加载该开关柜下的所有采样点
@@ -226,6 +229,7 @@ function callGetSample(data) {
 	}
 }
 function callGetInfer(data) {
+	//alert(data[0].photophotoid);
 	var table = document.getElementById("table");
 	//var sample = document.getElementById("sample").value;
 	var tr = new Array();
@@ -318,6 +322,121 @@ function callGetInfer(data) {
 		 */
 	}
 }
+
+function getAllPhotoNumber()
+{
+	dwr.engine.setAsync(false);
+	dataManage.getPicNum(callPhotoNumber);
+	dwr.engine.setAsync(true);
+}
+
+function getSamplePhotoNumber(sampleid)
+{
+	dwr.engine.setAsync(false);
+	//alert(sampleid);
+	dataManage.getSamplePicNum(sampleid,callPhotoNumber);
+	dwr.engine.setAsync(true);
+}
+
+function callPhotoNumber(data)
+{
+	//alert(data);
+	var photoNumber = data;
+	//alert(data);
+	if(photoNumber%12==0)
+		photoPage=photoNumber/12;
+	else
+		photoPage=parseInt(photoNumber/12+1);
+	//alert(photoPage);
+}
+
+function first()
+{
+	var substation = '<%=request.getParameter("sid")%>';
+	var nodeid = '<%=request.getParameter("nodeid")%>';
+	var sampleid = document.getElementById("sample").value;
+	if(sampleid=="-1")
+		getAllPhotoNumber();	
+	else
+		getSamplePhotoNumber(sampleid);
+	 
+	//alert(photoPage);
+	
+	var pageIndex = 0;
+	var showPageIndex = pageIndex+1;
+	document.getElementById("truePage").innerHTML=pageIndex;
+	document.getElementById("pageIndex").innerHTML="第"+showPageIndex+"页";
+	document.getElementById("pages").innerHTML="共"+photoPage+"页";
+	dataManage.inqueryDevice(nodeid,substation,pageIndex,callGetInfer);
+}
+function pre()
+{	
+	var substation = '<%=request.getParameter("sid")%>';
+	var nodeid = '<%=request.getParameter("nodeid")%>';
+	var sampleid = document.getElementById("sample").value;
+	if(sampleid=="-1")
+		getAllPhotoNumber();	
+	else
+		getSamplePhotoNumber(sampleid);
+	
+	var pageIndex=parseInt(document.getElementById("truePage").innerHTML);
+	
+	if(pageIndex<=0)first();
+	else
+	{
+		pageIndex=pageIndex-1;
+		var showPageIndex = pageIndex+1;
+		document.getElementById("truePage").innerHTML=pageIndex;
+		document.getElementById("pageIndex").innerHTML="第"+showPageIndex+"页";
+		document.getElementById("pages").innerHTML="共"+photoPage+"页";
+	}
+	dataManage.inqueryDevice(nodeid,substation,pageIndex,callGetInfer);
+		
+}
+function next()
+{
+	var substation = '<%=request.getParameter("sid")%>';
+	var nodeid = '<%=request.getParameter("nodeid")%>';
+	var sampleid = document.getElementById("sample").value;
+	if(sampleid=="-1")
+		getAllPhotoNumber();	
+	else
+		getSamplePhotoNumber(sampleid);
+	
+	var pageIndex=parseInt(document.getElementById("truePage").innerHTML);
+	
+	if(pageIndex>=photoPage)last();
+	else
+	{
+		pageIndex=pageIndex+1;
+		document.getElementById("truePage").innerHTML=pageIndex;
+		var showPageIndex = pageIndex+1;
+		document.getElementById("pageIndex").innerHTML="第"+showPageIndex+"页";
+		document.getElementById("pages").innerHTML="共"+photoPage+"页";
+	}
+	dataManage.inqueryDevice(nodeid,substation,pageIndex,callGetInfer);
+}
+function last()
+{
+	var substation = '<%=request.getParameter("sid")%>';
+	var nodeid = '<%=request.getParameter("nodeid")%>';
+	
+	var sampleid = document.getElementById("sample").value;
+	if(sampleid=="-1")
+		getAllPhotoNumber();	
+	else
+		getSamplePhotoNumber(sampleid);
+	 
+	//alert(photoPage);
+	
+	var pageIndex = photoPage-1;
+	var showPageIndex = pageIndex+1;
+	document.getElementById("truePage").innerHTML=pageIndex;
+	document.getElementById("pageIndex").innerHTML="第"+showPageIndex+"页";
+	document.getElementById("pages").innerHTML="共"+photoPage+"页";
+	dataManage.inqueryDevice(nodeid,substation,pageIndex,callGetInfer);
+}
+
 </script>
 
 <style>
@@ -375,7 +494,7 @@ function callGetInfer(data) {
                    	 图像
                 </a>
 				 <select id="sample" onchange="inquery()" class="selected"
-						style="display:none;" onclick="clickSample()">
+						style="display:none;" ">
 						<option selected value=-1>
 							请选择采样点
 						</option>
@@ -389,16 +508,30 @@ function callGetInfer(data) {
                  <div class="mycaozuo">
                     &nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-remove-sign"></i>
                     <button id="delete" class="btn-iqr" onclick="dele()">批量删除</button>
-                    <button id="inqueryAll" class="btn-iqr" onclick="inqueryAll()">全部显示</button>
+                    <button id="inqueryAll" class="btn-iqr" onclick="inqueryAll()">查看图片</button>
                     <!--
                     <button id="inquery" class="btn-del" onclick="inquery()">查询</button>
                     -->
                 </div>
             </div>
-            <div class="box-content">
+            <div>
                 <table class="table-style" id="table">
-			</table>
-		</div></div></div>
+				</table>
+			</div>
+			<div id="checkPage" style="display:none;background: #efefef;">
+				<p align="right">
+				<button id="inqueryAll" id="first" onClick="first()" style="width:50px;height:30px;">首页</button>
+				<button id="inqueryAll" id="pre" onClick="pre()" style="width:50px;height:30px;">上一页</button>
+				<button id="inqueryAll" id="next" onClick="next()" style="width:50px;height:30px;">下一页</button>
+				<button id="inqueryAll" id="last" onClick="last()" style="width:50px;height:30px;">尾页</button>
+				<font id="pageIndex">0</font>
+				/
+				<font id="pages">共1页</font>
+				<input type="hidden" name="cp" value="0"><font style="display:none" id="truePage">0</font>
+				</p>
+			</div>
+		</div>
+	</div>
 		<div id="showView" class="view_content">
 			<table border=0 width=100% align=center id="picture">
 				<tr>

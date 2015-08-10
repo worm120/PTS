@@ -36,7 +36,7 @@ public class findDeviceNotExsist extends HttpServlet {
 			ds=new dataselect();
 			
 			//out.println("<response>");
-			
+			out.print("<nodes>");
 			for(int i=0;i<svgid.length;i++)
 			{
 				String sql="select top 1 Devpoint.Device_ID,Device_Name from"+
@@ -106,13 +106,14 @@ public class findDeviceNotExsist extends HttpServlet {
 						
 						out.print("<humNum>"+humDevNum+"</humNum>");
 						
-						out.print("<arcNum>"+humDevNum+"</arcNum>");
+						out.print("<arcNum>"+arcDevNum+"</arcNum>");
 						out.print("<picNum>"+picDevNum+"</picNum>");
-						System.out.println("<temNum>"+temDevNum+"</temNum>");
+//						System.out.println("<temNum>"+temDevNum+"</temNum>");
 						out.print("</node>");
 					}
 				}
 			}
+			out.print("</nodes>");
 			//out.println("</response>");
 			
 			

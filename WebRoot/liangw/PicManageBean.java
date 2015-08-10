@@ -769,8 +769,8 @@ public class PicManageBean extends dataselect {
 	}
 
 	// 根据变电所和开关柜查找数据库里的图像信息,返回的是list类型的结果集
-	public List<PicManage> inqueryDevice(String deviceid, String subid) {
-		deviceid = getDeviceId(deviceid);
+	public List<PicManage> inqueryDevice(String nodeid, String subid) {
+		deviceid = getDeviceId(nodeid);
 		try {
 			Connection conn = this.getCon();
 			String sql = "select * from Photo,Device,Substation,Sample where Photo.Sample_ID=Sample.Sample_ID and "

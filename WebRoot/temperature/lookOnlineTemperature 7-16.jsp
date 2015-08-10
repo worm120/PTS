@@ -17,7 +17,7 @@
 	<style type="text/css">
 		body{ overflow: auto;margin:0px;padding:0px font-size: 12px;}
 		.box{width:100%; height: 100%;overflow: auto; background-color:  #fff;position: relative; margin-left:auto; margin-right:auto; }
-		#menu{width:150px;  background-color: #e2ecf5; font-size: 12px;}
+		#menu{width:150px; height: 150px; background-color: #e2ecf5; font-size: 12px;}
 		#node{width:100%; height: 22px; line-height: 22px; text-align:left;padding-left: 10px;  background-color: #4523ff;border-bottom:1px solid #686868; color: #ffffff;}
 		#close{position:absolute;top:0;right:0px; font-size: 10px; line-height: 20px;cursor: pointer; color:#ff0000;}
 		.samlist{ width: 100%; height: 20px; line-height: 20px; float: left; text-align: left; padding-left: 10px; margin: 1px 0px;border-bottom:1px solid #adadac;}
@@ -90,47 +90,45 @@
   	%>
   <body>	
 	<!--<div id="boxx" class="box" ></div> align="center" -->
-	
-	<!-- 引入svg图片 -->
-	<object style="position:relative;background-color:#000;" hspace="0" vspace="0" width=100% height=100%  id="emSvg" type="image/svg+xml" data="../svg/<%=svgpath %>"></object>
+		<object style="position:relative;background-color:#000;" hspace="0" vspace="0" width="500px" height="300px"  id="emSvg" type="image/svg+xml" data="../svg/<%=svgpath %>"></object>
 	
 	<ul id="menu" style="display:none;"> 
 	  
-	  <li id="teminfo"><a href="#">温度信息</a><div id="close" style="">关闭</div> 
+	  <li><a href="#">温度信息</a><div id="close" style="">关闭</div> 
 	    <ul id="m1" > 
 	      <li><a href="#" id="currentTemp">当前温度数据</a></li> 
 	      <!-- <li ><a href="#" id="Tempchart">实时温度数据走势图</a></li>  -->
 	      <li style="display:none;"><a href="#" id="historyTemp">历史温度数据 </a></li> 
-	      <li><a href="#" id="alarmLogTem">温度报警记录 </a></li>
+	      <li><a href="#" id="alarmLog">温度报警记录 </a></li>
 	    </ul> 
 	  </li> 
-	  <li id="huminfo"><a href="#">湿度信息</a> 
+	  <li><a href="#">湿度信息</a> 
 	    <ul id="m2" > 
 	      <li><a href="#" id="currentHum">当前湿度数据</a></li> 
 	      <li style="display:none;"><a href="#" id="historyHum">历史湿度数据 </a></li> 
 	      <li><a href="#" id="alarmLogHum">湿度报警记录 </a></li>
 	    </ul> 
 	  </li> 
-	  <li id="picinfo"><a href="#">图像信息</a> 
+	  <li><a href="#">图像信息</a> 
 	    <ul id="m3" > 
 	      
-<!-- 	      <li style="display:none;"><a href="#" id="picSet">查看设置</a></li>  -->
+	      <li style="display:none;"><a href="#" id="picSet">查看设置</a></li> 
 	       
-<!-- 	      <li  style="display:none;"><a href="#" id="setAlarm">选区设置</a></li> -->
+	      <li  style="display:none;"><a href="#" id="setAlarm">选区设置</a></li>
 	      
-<!-- 	      <li style="display:none;"><a href="#" id="picCmp">分析结果</a></li> -->
+	      <li style="display:none;"><a href="#" id="picCmp">分析结果</a></li>
 	      <li><a href="#" id="dataManage">图片管理</a></li>
-<!-- 	      <li style="display:none;"><a href="#" id="alarmDeal">报警处理</a></li>  -->
+	      <li style="display:none;"><a href="#" id="alarmDeal">报警处理</a></li> 
 	      <li><a href="#" id="getRemotePic">抓拍</a></li> 
 	    </ul> 
 	  </li> 
-	  <li id="arcinfo"><a href="#">弧光信息</a> 
+	  <li><a href="#">弧光信息</a> 
 	    <ul id="m4" > 
 	      <li><a href="#" id="recentHu">最近弧光</a></li>
 	      <li ><a href="#" id="cishu">弧光次数记录</a></li>
-<!-- 	      <li style="display:none;"><a href="#" id="qianghu">强弧</a></li>  -->
-<!-- 	      <li style="display:none;"><a href="#" id="ruohu">弱弧</a></li>  -->
-<!--           <li style="display:none;"><a href="#" id="huguang">历史记录</a></li>  -->
+	      <li style="display:none;"><a href="#" id="qianghu">强弧</a></li> 
+	      <li style="display:none;"><a href="#" id="ruohu">弱弧</a></li> 
+	      <li style="display:none;"><a href="#" id="huguang">历史记录</a></li> 
 	    </ul> 
 	  </li> 
 	  <!-- <li><a href="#" id="canshuSet">参数设置</a>  -->
@@ -139,7 +137,7 @@
 	  </li>
 	   <li style="display:none;"><a href="#" id="health">健康状况评估</a> 
 	  </li>
-	  <li id="devinfo"><a href="#" id="nodeinfo">开关柜信息</a></li> 
+	  <li><a href="#" id="nodeinfo">开关柜信息</a></li> 
 	</ul>
 	<!-- 显示环境温、湿度 -->
 	<div class="huanjing" style="display:none;">
@@ -210,10 +208,10 @@
 			start:function(e){
 				var o;
 				e = rDrag.fixEvent(e);
-		        e.preventDefault && e.preventDefault();
-		        rDrag.o = o = this;
+		               e.preventDefault && e.preventDefault();
+		               rDrag.o = o = this;
 				o.x = e.clientX - rDrag.o.offsetLeft;
-		        o.y = e.clientY - rDrag.o.offsetTop;
+		                o.y = e.clientY - rDrag.o.offsetTop;
 				document.onmousemove = rDrag.move;
 				document.onmouseup = rDrag.end;
 			},
@@ -238,9 +236,11 @@
 		        }
 		        return e;
 		    }
-		};*/
+		};
+		
+		*/
 		window.onload = function(){
-		    var obj = document.getElementById('menu');
+		        var obj = document.getElementById('menu');
 			//rDrag.init(obj);
 			init();
 		};

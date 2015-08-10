@@ -7,34 +7,15 @@ var Para_Check = 60;// 巡检周期（s）
 var Para_Voice = "1";// "../audio/baojing.wav";//报警提示音频文件
 var t;
 var selectNodeId;
-var ajaxForMenu;
-
 function init() {
-	if (navigator.userAgent.indexOf('Firefox') >= 0)
-	{
-//		var svgdoc = document.getElementById("emSvg");
-//		alert("1");
-//		alert(document.documentElement.clientWidth);
-	}
 	var svgdoc =document.getElementById("emSvg").getSVGDocument();
 	var nodes = svgdoc.getElementsByTagName("text");
 	var svgid = new Array();
 	var index = 0;
-	ajaxForMenu = ajaxFindDeviceNotExsist();
-//	alert(ajaxForMenu);
-//	alert(ajaxForMenu.getElementsByTagName("node"));
-	/*
-	var nodess = svgdoc.getElementsByTagName("rect");
-	for(var i=0;i < noedss.length;i++)
-		{
-			var colour = nodess.item(i).getAttribute("fill");
-			if(colour=="#000000")
-				{
-					nodess.item(i).addEventListener("click", hide_menu, false);
-				}
-		}*/
+	
+	var nodess = svgdoc.getElementById("svg_1880");
 	//alert(nodess);
-	//nodess.addEventListener("click", hide_menu, false);
+	nodess.addEventListener("click", hide_menu, false);
 	
 	for ( var i = 0; i < nodes.length; i++) {
 		var nodeid = nodes.item(i).getAttribute("id");
@@ -42,12 +23,9 @@ function init() {
 		var colour = nodes.item(i).getAttribute("fill");
 		//alert(colour);
 		// nodeid.style.fill="blue";
-		if ((nodeid != null)&& (colour == "#ffffff")) {
+		if ((nodeid != null)&& colour == "#ffffff") {
 			nodes.item(i).style.cursor = "pointer";
-			nodes.item(i).addEventListener("click", show_menu, true);
-			
-			
-			
+			nodes.item(i).addEventListener("click", show_menu, false);
 			// nodes.item(i).onClick="show_menu()";
 			//nodes.item(i).textContent = "未关联";
 			svgid[index] = nodeid;
@@ -66,15 +44,10 @@ function init() {
 	} else {
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	xmlhttp.open("GET", "../servlet/showOnlineDevice?nodeid="
-			+ svgid.toString() + "&sid="
-			+ document.getElementById("Substation_ID").value + "&r="
-			+ new Date().getTime(), true);
-	xmlhttp.send();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// 显示返回的相应关id联接线图上的节点的开关柜
-			//var s = xmlhttp.responseText;
+			var s = xmlhttp.responseText;
 			var result = xmlhttp.responseXML.getElementsByTagName("node");
 			/*
 			var result_surround = xmlhttp.responseXML.getElementsByTagName("surround");
@@ -109,7 +82,7 @@ function init() {
 					node.textContent = "暂无数据";
 				} else {
 					//node.textContent = Device_Name+"(正常)";
-					node.textContent = "正  常";
+					node.textContent = "正常";
 				}
 				// 报警
 				//var alarmR=Device_Name+"：";
@@ -155,7 +128,11 @@ function init() {
 			}
 		}
 	};
-
+	xmlhttp.open("GET", "../servlet/showOnlineDevice?nodeid="
+			+ svgid.toString() + "&sid="
+			+ document.getElementById("Substation_ID").value + "&r="
+			+ new Date().getTime(), true);
+	xmlhttp.send();
 
 	setInterval("sss('" + svgid.toString() + "')", Para_Check * 1000);
 
@@ -199,8 +176,8 @@ function preAlarmTimeout(svgid)// 预警闪烁
 
 function Alarm(svgid)// 报警
 {
-	//var svgdoc = document.getElementById("emSvg").getSVGDocument();
-	//var node = svgdoc.getElementById(svgid);
+	var svgdoc = document.getElementById("emSvg").getSVGDocument();
+	var node = svgdoc.getElementById(svgid);
 	/*
 	node.style.fill = 'red';
 	node.style.stroke = 'red';
@@ -252,10 +229,6 @@ function sss(svgid) {
 	} else {
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	xmlhttp.open("GET", "../servlet/showOnlineDevice?nodeid=" + svgid + "&sid="
-			+ document.getElementById("Substation_ID").value + "&r="
-			+ new Date().getTime(), true);
-	xmlhttp.send();
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// 显示返回的相应关id联接线图上的节点的开关柜
@@ -293,7 +266,7 @@ function sss(svgid) {
 					node.textContent = "暂无数据";
 				} else {
 					//node.textContent = Device_Name+"(正常)";
-					node.textContent = "正   常";
+					node.textContent = "正常";
 				}
 				// 报警
 				var alarmR="";
@@ -369,7 +342,10 @@ function sss(svgid) {
 		}
 	};
 	// alert(svgid.toString());
-
+	xmlhttp.open("GET", "../servlet/showOnlineDevice?nodeid=" + svgid + "&sid="
+			+ document.getElementById("Substation_ID").value + "&r="
+			+ new Date().getTime(), true);
+	xmlhttp.send();
 }
 
 function show_menu(evt) {
@@ -427,81 +403,47 @@ function show_menu(evt) {
             }
     	}
     }
-    var result = ajaxForMenu.getElementsByTagName("node");
-    for(i=0;i<result.length;i++)
-    {
-    	if(svgNodeId==result[i].getElementsByTagName("svgid")[0].childNodes[0].nodeValue)
-    	{
-
-
-
-    		document.getElementById("menu").style.display = "block";
-    		document.getElementById("menu").style.left = x;
-    		document.getElementById("menu").style.top = y;
-
-    		document.getElementById("menu").style.position = "absolute";
-    		document.getElementById("menu").style.z_index = 400;
-    		document.getElementById("close").addEventListener("click", closing, false);
-    		var alist = document.getElementById("nodeinfo").getElementsByTagName("a");
-    		// alert(alist);
-    		document.getElementById("nodeinfo").addEventListener("click",nodeinfoWindow, false);
-    		// document.getElementById("Tempchart").addEventListener("click",
-    		// chartWindow, false);
-
-    		document.getElementById("currentTemp").addEventListener("click",currentTemp, false);
-    		document.getElementById("historyTemp").addEventListener("click",historyTempWindow, false);
-    		document.getElementById("alarmLogTem").addEventListener("click",alarmLogTempWindow, false);
-    		// document.getElementById("samSelect").addEventListener("click",
-    		// searchNodeInfo, false);
-    		//如果没有湿度设备就不显示湿度菜单
-    		if(parseInt(result[i].getElementsByTagName("humNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("huminfo").style.display = "none";
-    		else{
-    			document.getElementById("huminfo").style.display = "block";
-	    		document.getElementById("currentHum").addEventListener("click", currentHum,false);
-	    		document.getElementById("historyHum").addEventListener("click", historyHum,false);
-	    		document.getElementById("alarmLogHum").addEventListener("click",alarmLogHum, false);
-    		}
-    		
-    		//如果没有图像设备就不显示图像菜单
-    		if(parseInt(result[i].getElementsByTagName("picNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("picinfo").style.display = "none";
-    		else{
-//	    		document.getElementById("picSet").addEventListener("click", picSet, false);	
-//	    		document.getElementById("picCmp").addEventListener("click", picCmp, false);
-    			document.getElementById("picinfo").style.display = "block";
-	    		document.getElementById("dataManage").addEventListener("click", dataManage,false);
-//	    		document.getElementById("alarmDeal").addEventListener("click", alarmDeal, false);
-	    		document.getElementById("getRemotePic").addEventListener("click",getRemotePic, false);
-//	    		document.getElementById("setAlarm").addEventListener("click", setAlarm, false);
-    		}
-    		// document.getElementById("canshuSet").addEventListener("click", canshuSet,
-    		// false);
-//    		document.getElementById("alarmTong").addEventListener("click",TemperatureStatistics, false);
-
-    		//document.getElementById("historyPic").addEventListener("click", historyPic,false);
-//    		document.getElementById("health").addEventListener("click", health, false);
-
-    		//如果没有弧光设备就不显示弧光
-    		if(parseInt(result[i].getElementsByTagName("arcNum")[0].childNodes[0].nodeValue)==0)
-    			document.getElementById("arcinfo").style.display = "none";
-    		else{
-    			document.getElementById("arcinfo").style.display = "block";
-//	    		document.getElementById("huguang").addEventListener("click", huguang, false);
-//	    		document.getElementById("qianghu").addEventListener("click", qianghu, false);
-//	    		document.getElementById("ruohu").addEventListener("click", ruohu, false);
-	    		document.getElementById("recentHu").addEventListener("click", recentHu, false);
-	    		document.getElementById("cishu").addEventListener("click", huguangcishu, false);
-    		}
-    		
-    		//阻止冒泡
-    		//evt.cancelBubble = true;
-    	}// svgid
-    	
-    }
     
-    
+	document.getElementById("menu").style.display = "block";
+	document.getElementById("menu").style.left = x;
+	document.getElementById("menu").style.top = y;
 
+	document.getElementById("menu").style.position = "absolute";
+	document.getElementById("menu").style.z_index = 400;
+	document.getElementById("close").addEventListener("click", closeing, false);
+	var alist = document.getElementById("nodeinfo").getElementsByTagName("a");
+	// alert(alist);
+	document.getElementById("nodeinfo").addEventListener("click",nodeinfoWindow, false);
+	// document.getElementById("Tempchart").addEventListener("click",
+	// chartWindow, false);
+	document.getElementById("currentTemp").addEventListener("click",currentTemp, false);
+	document.getElementById("historyTemp").addEventListener("click",historyTempWindow, false);
+	document.getElementById("alarmLog").addEventListener("click",alarmLogTempWindow, false);
+	// document.getElementById("samSelect").addEventListener("click",
+	// searchNodeInfo, false);
+	document.getElementById("currentHum").addEventListener("click", currentHum,false);
+	document.getElementById("historyHum").addEventListener("click", historyHum,false);
+	document.getElementById("alarmLogHum").addEventListener("click",alarmLogHum, false);
+	document.getElementById("picSet").addEventListener("click", picSet, false);
+	// document.getElementById("selSet").addEventListener("click", selSet,
+	// false);
+	document.getElementById("picCmp").addEventListener("click", picCmp, false);
+	document.getElementById("dataManage").addEventListener("click", dataManage,false);
+	document.getElementById("alarmDeal").addEventListener("click", alarmDeal, false);
+	document.getElementById("getRemotePic").addEventListener("click",getRemotePic, false);
+	document.getElementById("huguang").addEventListener("click", huguang, false);
+	// document.getElementById("canshuSet").addEventListener("click", canshuSet,
+	// false);
+	document.getElementById("alarmTong").addEventListener("click",TemperatureStatistics, false);
+
+	//document.getElementById("historyPic").addEventListener("click", historyPic,false);
+	document.getElementById("health").addEventListener("click", health, false);
+
+	document.getElementById("qianghu").addEventListener("click", qianghu, false);
+	document.getElementById("ruohu").addEventListener("click", ruohu, false);
+	document.getElementById("recentHu").addEventListener("click", recentHu, false);
+	document.getElementById("cishu").addEventListener("click", huguangcishu, false);
+	document.getElementById("setAlarm").addEventListener("click", setAlarm, false);
 
 }
 
@@ -584,6 +526,7 @@ function huguangcishu()// 弧光次数
 {
 	window.open('huguangcishu.jsp?pid='+ selectNodeId,'huguangcishu','height=300,width=400,top=30px,left=30px,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,status=no');
 }
+
 
 function recentHu()//最近7次弧光
 {
@@ -763,59 +706,7 @@ function searchNodeInfo()// 节点信息查询
 					'height=300px,width=300px,top=30px,left=30px,toolbar=no,menubar=no,resizable=no,location=no,status=no');
 }
 
-function closing()// 菜单关闭
+function closeing()// 菜单关闭
 {
 	document.getElementById("menu").style.display = "none";
-}
-
-
-//获得相关节点下各设备的数量以决定点击菜单的显示
-function ajaxFindDeviceNotExsist()
-{
-	var svgdoc =document.getElementById("emSvg").getSVGDocument();
-	var nodes = svgdoc.getElementsByTagName("text");
-	var svgid = new Array();
-	var index = 0;
-	for ( var i = 0; i < nodes.length; i++) {
-		var nodeid = nodes.item(i).getAttribute("id");
-		
-		var colour = nodes.item(i).getAttribute("fill");
-		//alert(colour);
-		// nodeid.style.fill="blue";
-		if ((nodeid != null)&& (colour == "#ffffff")) {
-			
-			svgid[index] = nodeid;
-			index++;
-		}
-		
-	}		
-	var xmlhttp;
-	if (window.XMLHttpRequest) {
-		xmlhttp = new XMLHttpRequest();
-	} else {
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-//	xmlhttp.onreadystatechange = function() {
-//		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//			// 显示返回的相应关id联接线图上的节点的开关柜
-//			var s = xmlhttp.responseText;		
-////			alert(s);
-//			return s;
-//
-//			}
-//	};
-	xmlhttp.open("GET", "../servlet/findDeviceNotExsist?nodeid="
-			+ svgid.toString() + "&r="
-			+ new Date().getTime(), false);//确保ajax能返回值
-	xmlhttp.send();
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		// 显示返回的相应关id联接线图上的节点的开关柜
-//		var m =xmlhttp.responseText;
-//		alert(m);
-		var s = xmlhttp.responseXML;		
-		
-		return s;
-
-	}
 }

@@ -63,7 +63,7 @@
 			{
 			  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 			  {
-				//根据返回的图像文件名显示图像
+					//根据返回的图像文件名显示图像
 				    var result=xmlhttp.responseText;
 				    //alert(result);
 				    if(result!="none")
@@ -85,7 +85,7 @@
 			
 			
 			$(function(){
-			interval = setInterval(increment,50);
+			interval = setInterval(increment,40);
 			var current = 0;
 			function increment()
 			{

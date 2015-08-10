@@ -52,7 +52,7 @@
 			 out.print("&nbsp&nbsp&nbsp&nbsp&nbsp");
 			 out.print("变电所名称：");
 			 out.print("<b>"+sname+"</b>");
-           rs.close();
+           	rs.close();
            %>
 
 </div>
@@ -78,9 +78,9 @@
 					rs1.close();stmt.close();conn.close();
 				%>
 				</select>&nbsp&nbsp&nbsp
-				起始日期：<input id="sdate" name="sdate" type="text"  data-date-format="yyyy-mm-dd"  class="datepicker span11" style="width: 213px; ">
+				起始日期：<input id="sdate" name="sdate" type="text"  data-date-format="yyyy-mm-dd"  class="datepicker span11" style="width: 213px; "/>
 				&nbsp&nbsp&nbsp
-				结束日期：<input id="fdate" name="fdate" type="text"  data-date-format="yyyy-mm-dd"  class="datepicker span11" style="width: 213px; ">
+				结束日期：<input id="fdate" name="fdate" type="text"  data-date-format="yyyy-mm-dd"  class="datepicker span11" style="width: 213px; "/>
 				&nbsp&nbsp&nbsp
 				<button  class="btn" type="submit"> 查询</button>
 				</p>
@@ -586,377 +586,377 @@ $('#fdate').datepicker();
 
 </script>
 <script type="text/javascript">
-	var cp=1;
-	$(document).ready(function()
-	{
-		var xmlhttp2;
- 		xmlhttp2=new XMLHttpRequest();
-  		xmlhttp2.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+1,false);
-  		xmlhttp2.send();
-  		document.getElementById("pic").innerHTML=xmlhttp2.responseText;
-  		document.getElementById("page1").innerHTML="第1页";document.getElementById("cpage1").innerHTML=1;
-		var y=parseInt(document.getElementById("nys1").innerHTML);
-  		document.getElementById("pages1").innerHTML="共"+y+"页";
-	});
-	if(cp==1)
-	{
-		document.getElementById("first1").setAttribute("disabled","disabled");
-        document.getElementById("pre1").setAttribute("disabled","disabled"); 
-    }
-	else
-	{
-		document.getElementById("first1").removeAttribute("disabled","disabled");
-		document.getElementById("pre1").removeAttribute("disabled","disabled");
-	}
-	if(cp==<%=pageSize1%>)
-	{ 
-		document.getElementById("last1").setAttribute("disabled","disabled");
-		document.getElementById("next1").setAttribute("disabled","disabled"); 
-	}
-	else
-	{
-		document.getElementById("last1").removeAttribute("disabled","disabled");
-		document.getElementById("next1").removeAttribute("disabled","disabled");
-	}
-	function first1()
-	{
-		cp=1;
-		var xmlhttp1;
-  		xmlhttp1=new XMLHttpRequest();
-  		xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  		xmlhttp1.send();
-  		document.getElementById("pic").innerHTML=xmlhttp1.responseText;
-  		document.getElementById("page1").innerHTML="第"+cp+"页";
-  		document.getElementById("cpage1").innerHTML=cp;
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first1").setAttribute("disabled","disabled");
-        	document.getElementById("pre1").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first1").removeAttribute("disabled","disabled");
-			document.getElementById("pre1").removeAttribute("disabled","disabled");
-		}
-		var y=parseInt(document.getElementById("nys1").innerHTML);
-		var pageSize=y;
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last1").setAttribute("disabled","disabled");
-			document.getElementById("next1").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last1").removeAttribute("disabled","disabled");
-			document.getElementById("next1").removeAttribute("disabled","disabled");
-		}
-	}
-	function pre1()
-	{
-		var c=parseInt(document.getElementById("cpage1").innerHTML);
-		//alert(c);
-		cp=c-1;
-		if(cp>0)
-		{
-			var xmlhttp1;
-  			xmlhttp1=new XMLHttpRequest();
-  			xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  			xmlhttp1.send();
-  			document.getElementById("pic").innerHTML=xmlhttp1.responseText;
-  			document.getElementById("page1").innerHTML="第"+cp+"页";
-  			document.getElementById("cpage1").innerHTML=cp;
-  		}
-  		else
-  		{
-  			cp=1;
-  		}
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first1").setAttribute("disabled","disabled");
-            document.getElementById("pre1").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first1").removeAttribute("disabled","disabled");
-			document.getElementById("pre1").removeAttribute("disabled","disabled");
-		}
-		var y=parseInt(document.getElementById("nys1").innerHTML);
-		var pageSize=y;
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last1").setAttribute("disabled","disabled");
-			document.getElementById("next1").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last1").removeAttribute("disabled","disabled");
-			document.getElementById("next1").removeAttribute("disabled","disabled");
-		}
-	}
-	function next1()
-	{
-		var c=parseInt(document.getElementById("cpage1").innerHTML);
-		//alert(c);
-		cp=c+1;
-		//alert(cp);
-		var y=parseInt(document.getElementById("nys1").innerHTML);
-		var pageSize=y;
-		if(cp<=pageSize)
-		{
-			var xmlhttp1;
-  			xmlhttp1=new XMLHttpRequest();
-  			xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  			xmlhttp1.send();
-  			document.getElementById("pic").innerHTML=xmlhttp1.responseText;
-  			document.getElementById("page1").innerHTML="第"+cp+"页";
-  			document.getElementById("cpage1").innerHTML=cp;
-  		}
-  		else
-  		{
-  			cp=pageSize;
-  		}
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first1").setAttribute("disabled","disabled");
-        	document.getElementById("pre1").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first1").removeAttribute("disabled","disabled");
-			document.getElementById("pre1").removeAttribute("disabled","disabled");
-		}
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last1").setAttribute("disabled","disabled");
-			document.getElementById("next1").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last1").removeAttribute("disabled","disabled");
-			document.getElementById("next1").removeAttribute("disabled","disabled");
-		}
+// 	var cp=1;
+// 	$(document).ready(function()
+// 	{
+// 		var xmlhttp2;
+//  		xmlhttp2=new XMLHttpRequest();
+//   		xmlhttp2.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+1,false);
+//   		xmlhttp2.send();
+//   		document.getElementById("pic").innerHTML=xmlhttp2.responseText;
+//   		document.getElementById("page1").innerHTML="第1页";document.getElementById("cpage1").innerHTML=1;
+// 		var y=parseInt(document.getElementById("nys1").innerHTML);
+//   		document.getElementById("pages1").innerHTML="共"+y+"页";
+// 	});
+// 	if(cp==1)
+// 	{
+// 		document.getElementById("first1").setAttribute("disabled","disabled");
+//         document.getElementById("pre1").setAttribute("disabled","disabled"); 
+//     }
+// 	else
+// 	{
+// 		document.getElementById("first1").removeAttribute("disabled","disabled");
+// 		document.getElementById("pre1").removeAttribute("disabled","disabled");
+// 	}
+// 	if(cp==<%=pageSize1%>)
+// 	{ 
+// 		document.getElementById("last1").setAttribute("disabled","disabled");
+// 		document.getElementById("next1").setAttribute("disabled","disabled"); 
+// 	}
+// 	else
+// 	{
+// 		document.getElementById("last1").removeAttribute("disabled","disabled");
+// 		document.getElementById("next1").removeAttribute("disabled","disabled");
+// 	}
+// 	function first1()
+// 	{
+// 		cp=1;
+// 		var xmlhttp1;
+//   		xmlhttp1=new XMLHttpRequest();
+//   		xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   		xmlhttp1.send();
+//   		document.getElementById("pic").innerHTML=xmlhttp1.responseText;
+//   		document.getElementById("page1").innerHTML="第"+cp+"页";
+//   		document.getElementById("cpage1").innerHTML=cp;
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first1").setAttribute("disabled","disabled");
+//         	document.getElementById("pre1").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first1").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre1").removeAttribute("disabled","disabled");
+// 		}
+// 		var y=parseInt(document.getElementById("nys1").innerHTML);
+// 		var pageSize=y;
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last1").setAttribute("disabled","disabled");
+// 			document.getElementById("next1").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last1").removeAttribute("disabled","disabled");
+// 			document.getElementById("next1").removeAttribute("disabled","disabled");
+// 		}
+// 	}
+// 	function pre1()
+// 	{
+// 		var c=parseInt(document.getElementById("cpage1").innerHTML);
+// 		alert(c);
+// 		cp=c-1;
+// 		if(cp>0)
+// 		{
+// 			var xmlhttp1;
+//   			xmlhttp1=new XMLHttpRequest();
+//   			xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   			xmlhttp1.send();
+//   			document.getElementById("pic").innerHTML=xmlhttp1.responseText;
+//   			document.getElementById("page1").innerHTML="第"+cp+"页";
+//   			document.getElementById("cpage1").innerHTML=cp;
+//   		}
+//   		else
+//   		{
+//   			cp=1;
+//   		}
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first1").setAttribute("disabled","disabled");
+//             document.getElementById("pre1").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first1").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre1").removeAttribute("disabled","disabled");
+// 		}
+// 		var y=parseInt(document.getElementById("nys1").innerHTML);
+// 		var pageSize=y;
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last1").setAttribute("disabled","disabled");
+// 			document.getElementById("next1").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last1").removeAttribute("disabled","disabled");
+// 			document.getElementById("next1").removeAttribute("disabled","disabled");
+// 		}
+// 	}
+// 	function next1()
+// 	{
+// 		var c=parseInt(document.getElementById("cpage1").innerHTML);
+// 		alert(c);
+// 		cp=c+1;
+// 		alert(cp);
+// 		var y=parseInt(document.getElementById("nys1").innerHTML);
+// 		var pageSize=y;
+// 		if(cp<=pageSize)
+// 		{
+// 			var xmlhttp1;
+//   			xmlhttp1=new XMLHttpRequest();
+//   			xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   			xmlhttp1.send();
+//   			document.getElementById("pic").innerHTML=xmlhttp1.responseText;
+//   			document.getElementById("page1").innerHTML="第"+cp+"页";
+//   			document.getElementById("cpage1").innerHTML=cp;
+//   		}
+//   		else
+//   		{
+//   			cp=pageSize;
+//   		}
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first1").setAttribute("disabled","disabled");
+//         	document.getElementById("pre1").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first1").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre1").removeAttribute("disabled","disabled");
+// 		}
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last1").setAttribute("disabled","disabled");
+// 			document.getElementById("next1").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last1").removeAttribute("disabled","disabled");
+// 			document.getElementById("next1").removeAttribute("disabled","disabled");
+// 		}
 		
-	}
-	function last1()
-	{
-		var y=parseInt(document.getElementById("nys1").innerHTML);
-		var pageSize=y;
-		cp=pageSize;
-		var xmlhttp1;
-  		xmlhttp1=new XMLHttpRequest();
-  		xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  		xmlhttp1.send();
-  		document.getElementById("pic").innerHTML=xmlhttp1.responseText;
-  		document.getElementById("page1").innerHTML="第"+cp+"页";
-  		document.getElementById("cpage1").innerHTML=cp;
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first1").setAttribute("disabled","disabled");
-         	document.getElementById("pre1").setAttribute("disabled","disabled"); 
-         }
-		else
-		{
-			document.getElementById("first1").removeAttribute("disabled","disabled");
-			document.getElementById("pre1").removeAttribute("disabled","disabled");
-		}
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last1").setAttribute("disabled","disabled");
-			document.getElementById("next1").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last1").removeAttribute("disabled","disabled");
-			document.getElementById("next1").removeAttribute("disabled","disabled");
-		}
-	}
+// 	}
+// 	function last1()
+// 	{
+// 		var y=parseInt(document.getElementById("nys1").innerHTML);
+// 		var pageSize=y;
+// 		cp=pageSize;
+// 		var xmlhttp1;
+//   		xmlhttp1=new XMLHttpRequest();
+//   		xmlhttp1.open("GET","../../servlet/picalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   		xmlhttp1.send();
+//   		document.getElementById("pic").innerHTML=xmlhttp1.responseText;
+//   		document.getElementById("page1").innerHTML="第"+cp+"页";
+//   		document.getElementById("cpage1").innerHTML=cp;
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first1").setAttribute("disabled","disabled");
+//          	document.getElementById("pre1").setAttribute("disabled","disabled"); 
+//          }
+// 		else
+// 		{
+// 			document.getElementById("first1").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre1").removeAttribute("disabled","disabled");
+// 		}
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last1").setAttribute("disabled","disabled");
+// 			document.getElementById("next1").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last1").removeAttribute("disabled","disabled");
+// 			document.getElementById("next1").removeAttribute("disabled","disabled");
+// 		}
+// 	}
 
 </script>
 <script type="text/javascript">
-	var cp=1;
-	$(document).ready(function()
-	{
-  		var xmlhttp3;
- 		xmlhttp3=new XMLHttpRequest();
-  		xmlhttp3.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+1,false);
-  		xmlhttp3.send();
-  		document.getElementById("arc").innerHTML=xmlhttp3.responseText;
-  		document.getElementById("page2").innerHTML="第1页";document.getElementById("cpage2").innerHTML=1;
-		var y=parseInt(document.getElementById("nys2").innerHTML);
-  		document.getElementById("pages2").innerHTML="共"+y+"页";
-	});
-	if(cp==1)
-	{
-		document.getElementById("first2").setAttribute("disabled","disabled");
-        document.getElementById("pre2").setAttribute("disabled","disabled"); 
-    }
-	else
-	{
-		document.getElementById("first2").removeAttribute("disabled","disabled");
-		document.getElementById("pre2").removeAttribute("disabled","disabled");
-	}
-	if(cp==<%=pageSize2%>)
-	{ 
-		document.getElementById("last2").setAttribute("disabled","disabled");
-		document.getElementById("next2").setAttribute("disabled","disabled"); 
-	}
-	else
-	{
-		document.getElementById("last2").removeAttribute("disabled","disabled");
-		document.getElementById("next2").removeAttribute("disabled","disabled");
-	}
-	function first2()
-	{
-		cp=1;
-		var xmlhttp1;
-  		xmlhttp1=new XMLHttpRequest();
-  		xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  		xmlhttp1.send();
-  		document.getElementById("arc").innerHTML=xmlhttp1.responseText;
-  		document.getElementById("page2").innerHTML="第"+cp+"页";
-  		document.getElementById("cpage2").innerHTML=cp;
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first2").setAttribute("disabled","disabled");
-        	document.getElementById("pre2").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first2").removeAttribute("disabled","disabled");
-			document.getElementById("pre2").removeAttribute("disabled","disabled");
-		}
-		var y=parseInt(document.getElementById("nys2").innerHTML);
-		var pageSize=y;
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last2").setAttribute("disabled","disabled");
-			document.getElementById("next2").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last2").removeAttribute("disabled","disabled");
-			document.getElementById("next2").removeAttribute("disabled","disabled");
-		}
-	}
-	function pre2()
-	{
-		var c=parseInt(document.getElementById("cpage2").innerHTML);
-		//alert(c);
-		cp=c-1;
-		if(cp>0)
-		{
-			var xmlhttp1;
-  			xmlhttp1=new XMLHttpRequest();
-  			xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  			xmlhttp1.send();
-  			document.getElementById("arc").innerHTML=xmlhttp1.responseText;
-  			document.getElementById("page2").innerHTML="第"+cp+"页";
-  			document.getElementById("cpage2").innerHTML=cp;
-  		}
-  		else
-  		{
-  			cp=1;
-  		}
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first2").setAttribute("disabled","disabled");
-            document.getElementById("pre2").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first2").removeAttribute("disabled","disabled");
-			document.getElementById("pre2").removeAttribute("disabled","disabled");
-		}
-		var y=parseInt(document.getElementById("nys2").innerHTML);
-		var pageSize=y;
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last2").setAttribute("disabled","disabled");
-			document.getElementById("next2").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last2").removeAttribute("disabled","disabled");
-			document.getElementById("next2").removeAttribute("disabled","disabled");
-		}
-	}
-	function next2()
-	{
-		var c=parseInt(document.getElementById("cpage2").innerHTML);
-		//alert(c);
-		cp=c+1;
-		//alert(cp);
-		var y=parseInt(document.getElementById("nys2").innerHTML);
-		var pageSize=y;
-		if(cp<=pageSize)
-		{
-			var xmlhttp1;
-  			xmlhttp1=new XMLHttpRequest();
-  			xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  			xmlhttp1.send();
-  			document.getElementById("arc").innerHTML=xmlhttp1.responseText;
-  			document.getElementById("page2").innerHTML="第"+cp+"页";
-  			document.getElementById("cpage2").innerHTML=cp;
-  		}
-  		else
-  		{
-  			cp=pageSize;
-  		}
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first2").setAttribute("disabled","disabled");
-        	document.getElementById("pre2").setAttribute("disabled","disabled"); 
-        }
-		else
-		{
-			document.getElementById("first2").removeAttribute("disabled","disabled");
-			document.getElementById("pre2").removeAttribute("disabled","disabled");
-		}
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last2").setAttribute("disabled","disabled");
-			document.getElementById("next2").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last2").removeAttribute("disabled","disabled");
-			document.getElementById("next2").removeAttribute("disabled","disabled");
-		}
+// 	var cp=1;
+// 	$(document).ready(function()
+// 	{
+//   		var xmlhttp3;
+//  		xmlhttp3=new XMLHttpRequest();
+//   		xmlhttp3.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+1,false);
+//   		xmlhttp3.send();
+//   		document.getElementById("arc").innerHTML=xmlhttp3.responseText;
+//   		document.getElementById("page2").innerHTML="第1页";document.getElementById("cpage2").innerHTML=1;
+// 		var y=parseInt(document.getElementById("nys2").innerHTML);
+//   		document.getElementById("pages2").innerHTML="共"+y+"页";
+// 	});
+// 	if(cp==1)
+// 	{
+// 		document.getElementById("first2").setAttribute("disabled","disabled");
+//         document.getElementById("pre2").setAttribute("disabled","disabled"); 
+//     }
+// 	else
+// 	{
+// 		document.getElementById("first2").removeAttribute("disabled","disabled");
+// 		document.getElementById("pre2").removeAttribute("disabled","disabled");
+// 	}
+// 	if(cp==<%=pageSize2%>)
+// 	{ 
+// 		document.getElementById("last2").setAttribute("disabled","disabled");
+// 		document.getElementById("next2").setAttribute("disabled","disabled"); 
+// 	}
+// 	else
+// 	{
+// 		document.getElementById("last2").removeAttribute("disabled","disabled");
+// 		document.getElementById("next2").removeAttribute("disabled","disabled");
+// 	}
+// 	function first2()
+// 	{
+// 		cp=1;
+// 		var xmlhttp1;
+//   		xmlhttp1=new XMLHttpRequest();
+//   		xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   		xmlhttp1.send();
+//   		document.getElementById("arc").innerHTML=xmlhttp1.responseText;
+//   		document.getElementById("page2").innerHTML="第"+cp+"页";
+//   		document.getElementById("cpage2").innerHTML=cp;
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first2").setAttribute("disabled","disabled");
+//         	document.getElementById("pre2").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first2").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre2").removeAttribute("disabled","disabled");
+// 		}
+// 		var y=parseInt(document.getElementById("nys2").innerHTML);
+// 		var pageSize=y;
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last2").setAttribute("disabled","disabled");
+// 			document.getElementById("next2").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last2").removeAttribute("disabled","disabled");
+// 			document.getElementById("next2").removeAttribute("disabled","disabled");
+// 		}
+// 	}
+// 	function pre2()
+// 	{
+// 		var c=parseInt(document.getElementById("cpage2").innerHTML);
+		alert(c);
+// 		cp=c-1;
+// 		if(cp>0)
+// 		{
+// 			var xmlhttp1;
+//   			xmlhttp1=new XMLHttpRequest();
+//   			xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   			xmlhttp1.send();
+//   			document.getElementById("arc").innerHTML=xmlhttp1.responseText;
+//   			document.getElementById("page2").innerHTML="第"+cp+"页";
+//   			document.getElementById("cpage2").innerHTML=cp;
+//   		}
+//   		else
+//   		{
+//   			cp=1;
+//   		}
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first2").setAttribute("disabled","disabled");
+//             document.getElementById("pre2").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first2").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre2").removeAttribute("disabled","disabled");
+// 		}
+// 		var y=parseInt(document.getElementById("nys2").innerHTML);
+// 		var pageSize=y;
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last2").setAttribute("disabled","disabled");
+// 			document.getElementById("next2").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last2").removeAttribute("disabled","disabled");
+// 			document.getElementById("next2").removeAttribute("disabled","disabled");
+// 		}
+// 	}
+// 	function next2()
+// 	{
+// 		var c=parseInt(document.getElementById("cpage2").innerHTML);
+		alert(c);
+// 		cp=c+1;
+		alert(cp);
+// 		var y=parseInt(document.getElementById("nys2").innerHTML);
+// 		var pageSize=y;
+// 		if(cp<=pageSize)
+// 		{
+// 			var xmlhttp1;
+//   			xmlhttp1=new XMLHttpRequest();
+//   			xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   			xmlhttp1.send();
+//   			document.getElementById("arc").innerHTML=xmlhttp1.responseText;
+//   			document.getElementById("page2").innerHTML="第"+cp+"页";
+//   			document.getElementById("cpage2").innerHTML=cp;
+//   		}
+//   		else
+//   		{
+//   			cp=pageSize;
+//   		}
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first2").setAttribute("disabled","disabled");
+//         	document.getElementById("pre2").setAttribute("disabled","disabled"); 
+//         }
+// 		else
+// 		{
+// 			document.getElementById("first2").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre2").removeAttribute("disabled","disabled");
+// 		}
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last2").setAttribute("disabled","disabled");
+// 			document.getElementById("next2").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last2").removeAttribute("disabled","disabled");
+// 			document.getElementById("next2").removeAttribute("disabled","disabled");
+// 		}
 		
-	}
-	function last2()
-	{
-		var y=parseInt(document.getElementById("nys2").innerHTML);
-		var pageSize=y;
-		cp=pageSize;
-		var xmlhttp1;
-  		xmlhttp1=new XMLHttpRequest();
-  		xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
-  		xmlhttp1.send();
-  		document.getElementById("arc").innerHTML=xmlhttp1.responseText;
-  		document.getElementById("page2").innerHTML="第"+cp+"页";
-  		document.getElementById("cpage2").innerHTML=cp;
-  		if(cp==1)
-  		{ 
-  			document.getElementById("first2").setAttribute("disabled","disabled");
-         	document.getElementById("pre2").setAttribute("disabled","disabled"); 
-         }
-		else
-		{
-			document.getElementById("first2").removeAttribute("disabled","disabled");
-			document.getElementById("pre2").removeAttribute("disabled","disabled");
-		}
-		if(cp==pageSize)
-		{ 
-			document.getElementById("last2").setAttribute("disabled","disabled");
-			document.getElementById("next2").setAttribute("disabled","disabled"); 
-		}
-		else
-		{
-			document.getElementById("last2").removeAttribute("disabled","disabled");
-			document.getElementById("next2").removeAttribute("disabled","disabled");
-		}
-	}
+// 	}
+// 	function last2()
+// 	{
+// 		var y=parseInt(document.getElementById("nys2").innerHTML);
+// 		var pageSize=y;
+// 		cp=pageSize;
+// 		var xmlhttp1;
+//   		xmlhttp1=new XMLHttpRequest();
+//   		xmlhttp1.open("GET","../../servlet/arcalarm?sid=<%=sid%>&s=<%=s%>&f=<%=f%>&did=<%=did%>&cp="+cp,false);
+//   		xmlhttp1.send();
+//   		document.getElementById("arc").innerHTML=xmlhttp1.responseText;
+//   		document.getElementById("page2").innerHTML="第"+cp+"页";
+//   		document.getElementById("cpage2").innerHTML=cp;
+//   		if(cp==1)
+//   		{ 
+//   			document.getElementById("first2").setAttribute("disabled","disabled");
+//          	document.getElementById("pre2").setAttribute("disabled","disabled"); 
+//          }
+// 		else
+// 		{
+// 			document.getElementById("first2").removeAttribute("disabled","disabled");
+// 			document.getElementById("pre2").removeAttribute("disabled","disabled");
+// 		}
+// 		if(cp==pageSize)
+// 		{ 
+// 			document.getElementById("last2").setAttribute("disabled","disabled");
+// 			document.getElementById("next2").setAttribute("disabled","disabled"); 
+// 		}
+// 		else
+// 		{
+// 			document.getElementById("last2").removeAttribute("disabled","disabled");
+// 			document.getElementById("next2").removeAttribute("disabled","disabled");
+// 		}
+// 	}
 
 </script>
 <script type="text/javascript">
